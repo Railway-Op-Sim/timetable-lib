@@ -1,4 +1,4 @@
-package net.danielgill.ros.service;
+package net.danielgill.ros.service.time;
 
 public class Time {
     private int hours;

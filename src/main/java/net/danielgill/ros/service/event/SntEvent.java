@@ -1,7 +1,7 @@
 package net.danielgill.ros.service.event;
 
 import net.danielgill.ros.service.StartLocation;
-import net.danielgill.ros.service.Time;
+import net.danielgill.ros.service.time.Time;
 
 public class SntEvent extends Event {
     private Time time;

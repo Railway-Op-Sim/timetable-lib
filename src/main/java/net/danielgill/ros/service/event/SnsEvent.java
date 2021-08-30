@@ -1,6 +1,6 @@
 package net.danielgill.ros.service.event;
 
-import net.danielgill.ros.service.Time;
+import net.danielgill.ros.service.time.Time;
 
 public class SnsEvent extends Event {
     private Time time;
