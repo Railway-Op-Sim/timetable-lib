@@ -1,4 +1,4 @@
-package net.danielgill.ros.service;
+package net.danielgill.ros.service.location;
 
 public class NamedLocation {
     private String name;

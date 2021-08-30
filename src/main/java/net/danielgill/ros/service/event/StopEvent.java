@@ -1,6 +1,6 @@
 package net.danielgill.ros.service.event;
 
-import net.danielgill.ros.service.NamedLocation;
+import net.danielgill.ros.service.location.NamedLocation;
 import net.danielgill.ros.service.time.Time;
 
 public class StopEvent extends Event {
