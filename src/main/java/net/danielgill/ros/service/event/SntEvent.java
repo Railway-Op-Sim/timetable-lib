@@ -3,7 +3,7 @@ package net.danielgill.ros.service.event;
 import net.danielgill.ros.service.location.StartLocation;
 import net.danielgill.ros.service.time.Time;
 
-public class SntEvent extends Event {
+public class SntEvent extends TimedEvent {
     private Time time;
     private StartLocation location;
     
@@ -23,5 +23,10 @@ public class SntEvent extends Event {
     }
     public StartLocation getLocation() {
         return location;
+    }
+    
+    @Override
+    public void incrementTime(int minutes) {
+        this.time.addMinutes(minutes);
     }
 }

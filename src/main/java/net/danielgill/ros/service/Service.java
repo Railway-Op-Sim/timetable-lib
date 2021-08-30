@@ -2,6 +2,9 @@ package net.danielgill.ros.service;
 
 import java.util.ArrayList;
 import net.danielgill.ros.service.event.Event;
+import net.danielgill.ros.service.event.TimedEvent;
+import net.danielgill.ros.service.template.Template;
+import net.danielgill.ros.service.time.Time;
 
 public class Service {
     private String ref;
@@ -49,6 +52,17 @@ public class Service {
     
     public void addEvent(Event event) {
         this.events.add(event);
+    }
+    
+    public void addTemplate(Template template, Time startTime) {
+        for(int i = 0; i < template.getEventCount(); i++) {
+            Event tempEvent = template.getEventByIndex(i);
+            System.out.println("Event " + tempEvent.toString() + " found.");
+            if(tempEvent instanceof TimedEvent) {
+                ((TimedEvent) tempEvent).incrementTime(startTime.getMinutes());
+            }
+            this.events.add(tempEvent);
+        }
     }
     
     @Override

@@ -2,7 +2,7 @@ package net.danielgill.ros.service.event;
 
 import net.danielgill.ros.service.time.Time;
 
-public class CdtEvent extends Event {
+public class CdtEvent extends TimedEvent {
     private Time time;
     
     public CdtEvent(Time time) {
@@ -12,5 +12,10 @@ public class CdtEvent extends Event {
     
     public String toString() {
         return time.toString() + ";cdt";
+    }
+
+    @Override
+    public void incrementTime(int minutes) {
+        this.time.addMinutes(minutes);
     }
 }

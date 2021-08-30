@@ -2,7 +2,7 @@ package net.danielgill.ros.service.event;
 
 import net.danielgill.ros.service.time.Time;
 
-public class FnsEvent extends Event {
+public class FnsEvent extends TimedEvent {
     private Time time;
     private String ref;
     
@@ -15,5 +15,10 @@ public class FnsEvent extends Event {
     @Override
     public String toString() {
         return time.toString() + ";Fns;" + ref;
+    }
+    
+    @Override
+    public void incrementTime(int minutes) {
+        this.time.addMinutes(minutes);
     }
 }

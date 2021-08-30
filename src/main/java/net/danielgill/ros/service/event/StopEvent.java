@@ -3,7 +3,7 @@ package net.danielgill.ros.service.event;
 import net.danielgill.ros.service.location.NamedLocation;
 import net.danielgill.ros.service.time.Time;
 
-public class StopEvent extends Event {
+public class StopEvent extends TimedEvent {
     private Time arrTime;
     private Time depTime;
     private NamedLocation location;
@@ -35,5 +35,15 @@ public class StopEvent extends Event {
             output += depTime.toString() + ";";
         }
         return output + location.toString();
+    }
+
+    @Override
+    public void incrementTime(int minutes) {
+        if(arrTime != null) {
+            this.arrTime.addMinutes(minutes);
+        }
+        if(depTime != null) {
+            this.depTime.addMinutes(minutes);
+        }
     }
 }
