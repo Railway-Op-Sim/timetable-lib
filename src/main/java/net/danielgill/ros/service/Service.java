@@ -24,19 +24,19 @@ public class Service {
         this.maxBrake = maxBrake;
         this.startSpeed = startSpeed;
         
-        events = new ArrayList<Event>();
+        events = new ArrayList<>();
     }
     
     public Service(String ref, String description) {
         this.ref = ref;
         this.description = description;
-        events = new ArrayList<Event>();
+        events = new ArrayList<>();
     }
     
     public void setDetails(String ref, String description) {
         this.ref = ref;
         this.description = description;
-        events = new ArrayList<Event>();
+        events = new ArrayList<>();
     }
     
     public void setData(int startSpeed, int maxSpeed, int mass, int maxBrake, int power) {
@@ -55,15 +55,15 @@ public class Service {
     public String toString() {
         String output = "";
         
-        if(events.get(0).getType().equals("Sns")) {
-            output += ref + ";" + description + "\n";
-        } else {
-            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + "\n";
-        }
-        
         if(events.isEmpty()) {
-            System.err.println("No events exist in service.");
+            System.err.println("No events exist in service " + getRef());
         } else {
+            if(events.get(0).getType().equals("Sns")) {
+                output += ref + ";" + description + "\n";
+            } else {
+                output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + "\n";
+            }
+        
             for(int i = 0; i < events.size(); i++) {
                 output += events.get(i).toString() + "\n";
             }
