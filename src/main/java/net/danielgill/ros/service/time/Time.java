@@ -22,6 +22,10 @@ public class Time {
             this.minutes = minutes;
         }
     }
+    public Time(Time time) {
+        this.hours = time.hours;
+        this.minutes = time.minutes;
+    }
     
     @Override
     public String toString() {

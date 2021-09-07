@@ -22,4 +22,14 @@ public class FerEvent extends TimedEvent {
     public void incrementTime(int minutes) {
         this.time.addMinutes(minutes);
     }
+
+    @Override
+    public FerEvent newInstance(Event event) {
+        if(event instanceof FerEvent) {
+            FerEvent ferevent = (FerEvent) event;
+            return new FerEvent(new Time(ferevent.time), ferevent.location);
+        } else {
+            return null;
+        }
+    }
 }

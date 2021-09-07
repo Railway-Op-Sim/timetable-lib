@@ -18,4 +18,14 @@ public class CdtEvent extends TimedEvent {
     public void incrementTime(int minutes) {
         this.time.addMinutes(minutes);
     }
+
+    @Override
+    public CdtEvent newInstance(Event event) {
+        if(event instanceof CdtEvent) {
+            CdtEvent cdtevent = (CdtEvent) event;
+            return new CdtEvent(new Time(cdtevent.time));
+        } else {
+            return null;
+        }
+    }
 }

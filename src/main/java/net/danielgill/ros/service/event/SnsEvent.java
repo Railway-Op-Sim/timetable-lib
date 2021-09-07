@@ -28,4 +28,14 @@ public class SnsEvent extends TimedEvent {
     public void incrementTime(int minutes) {
         this.time.addMinutes(minutes);
     }
+
+    @Override
+    public SnsEvent newInstance(Event event) {
+        if(event instanceof SnsEvent) {
+            SnsEvent snsEvent = (SnsEvent) event;
+            return new SnsEvent(new Time(snsEvent.time), snsEvent.ref);
+        } else {
+            return null;
+        }
+    }
 }

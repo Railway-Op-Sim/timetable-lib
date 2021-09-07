@@ -55,9 +55,9 @@ public class Service {
     }
     
     public void addTemplate(Template template, Time startTime) {
-        for(int i = 0; i < template.getEventCount(); i++) {
-            Event tempEvent = template.getEventByIndex(i);
-            System.out.println("Event " + tempEvent.toString() + " found.");
+        Template temptemplate = new Template(template);
+        for(int i = 0; i < temptemplate.getEventCount(); i++) {
+            Event tempEvent = temptemplate.getEventByIndex(i);
             if(tempEvent instanceof TimedEvent) {
                 ((TimedEvent) tempEvent).incrementTime(startTime.getMinutes());
             }

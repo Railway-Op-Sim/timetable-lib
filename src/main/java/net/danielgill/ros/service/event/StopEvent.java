@@ -46,4 +46,14 @@ public class StopEvent extends TimedEvent {
             this.depTime.addMinutes(minutes);
         }
     }
+
+    @Override
+    public StopEvent newInstance(Event event) {
+        if(event instanceof StopEvent) {
+            StopEvent stopevent = (StopEvent) event;
+            return new StopEvent(new Time(stopevent.arrTime), new Time(stopevent.depTime), stopevent.location);
+        } else {
+            return null;
+        }
+    }
 }
