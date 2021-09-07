@@ -73,6 +73,29 @@ public class Service {
             System.err.println("No events exist in service " + getRef());
         } else {
             if(events.get(0).getType().equals("Sns")) {
+                output += ref + ";" + description + ",";
+            } else {
+                output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + ",";
+            }
+            
+            int current = 0;
+            for(int i = 0; i < events.size() - 1; i++) {
+                output += events.get(i).toString() + ",";
+                current = i + 1;
+            }
+            output += events.get(current).toString();
+        }
+        
+        return output;
+    }
+    
+    public String toFormattedString() {
+        String output = "";
+        
+        if(events.isEmpty()) {
+            System.err.println("No events exist in service " + getRef());
+        } else {
+            if(events.get(0).getType().equals("Sns")) {
                 output += ref + ";" + description + "\n";
             } else {
                 output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + "\n";
