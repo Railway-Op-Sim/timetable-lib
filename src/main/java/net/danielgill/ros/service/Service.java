@@ -51,7 +51,11 @@ public class Service {
     }
     
     public void addEvent(Event event) {
-        this.events.add(event);
+        try {
+            this.events.add(event);
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
     
     public void addTemplate(Template template, Time startTime) {
