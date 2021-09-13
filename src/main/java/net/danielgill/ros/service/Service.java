@@ -71,49 +71,80 @@ public class Service {
     
     @Override
     public String toString() {
-        String output = "";
-        
-        if(events.isEmpty()) {
-            System.err.println("No events exist in service " + getRef());
-        } else {
-            if(events.get(0).getType().equals("Sns")) {
-                output += ref + ";" + description + ",";
-            } else {
-                output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + ",";
-            }
-            
-            int current = 0;
-            for(int i = 0; i < events.size() - 1; i++) {
-                output += events.get(i).toString() + ",";
-                current = i + 1;
-            }
-            output += events.get(current).toString();
+        if(!isValid()) {
+            return "Service " + ref + " is not valid and therefore cannot be printed.";
         }
+        
+        String output = "";
+        if(events.get(0).getType().equals("Sns")) {
+            output += ref + ";" + description + ",";
+        } else {
+            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + ",";
+        }
+
+        int current = 0;
+        for(int i = 0; i < events.size() - 1; i++) {
+            output += events.get(i).toString() + ",";
+            current = i + 1;
+        }
+        output += events.get(current).toString();
         
         return output;
     }
     
     public String toFormattedString() {
-        String output = "";
-        
-        if(events.isEmpty()) {
-            System.err.println("No events exist in service " + getRef());
-        } else {
-            if(events.get(0).getType().equals("Sns")) {
-                output += ref + ";" + description + "\n";
-            } else {
-                output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + "\n";
-            }
-        
-            int current = 0;
-            for(int i = 0; i < events.size() - 1; i++) {
-                output += events.get(i).toString() + "\n";
-                current = i + 1;
-            }
-            output += events.get(current).toString();
+        if(!isValid()) {
+            return "Service " + ref + " is not valid and therefore cannot be processed.";
         }
         
+        String output = "";
+        if(events.get(0).getType().equals("Sns")) {
+            output += ref + ";" + description + "\n";
+        } else {
+            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + "\n";
+        }
+
+        int current = 0;
+        for(int i = 0; i < events.size() - 1; i++) {
+            output += events.get(i).toString() + "\n";
+            current = i + 1;
+        }
+        output += events.get(current).toString();
+        
         return output;
+    }
+    
+    public boolean isValid() {
+        String output = "[VALIDATION ERROR] ";
+        
+        if(ref.isBlank()) {
+            System.out.println(output + "Reference does not exist for a service.");
+            return false;
+        }
+        if(description.isBlank()) {
+            System.out.println(output + "Description is not valid for service " + ref + ".");
+            return false;
+        }
+        if(events.isEmpty()) {
+            System.out.println(output + "No events exist for service " + ref + ".");
+            return false;
+        }
+        
+        //TODO: Check each event with its own isValid() method.
+        
+        //TODO: Use new method to sort list of events.
+        
+        Event startEvent = getEventFromIndex(0);
+        if(startEvent.getType().equals("Sns")) {
+            
+        } else {
+            if(power <= 0 || mass <= 0 || maxSpeed <= 0 || maxBrake <= 0 || startSpeed == -1) {
+                System.out.println(output + "Data values for service " + ref + " are missing or incorrect.");
+                return false;
+            }
+        }
+        
+        return true;
     }
 
     public String getRef() {
