@@ -105,9 +105,12 @@ public class Service {
                 output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + "\n";
             }
         
-            for(int i = 0; i < events.size(); i++) {
+            int current = 0;
+            for(int i = 0; i < events.size() - 1; i++) {
                 output += events.get(i).toString() + "\n";
+                current = i + 1;
             }
+            output += events.get(current).toString();
         }
         
         return output;
