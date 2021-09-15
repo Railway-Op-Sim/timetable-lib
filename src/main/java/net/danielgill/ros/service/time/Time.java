@@ -36,7 +36,7 @@ public class Time {
         return this.minutes + (this.hours * 60);
     }
     
-    public void addMinutes(int amount) {
+    public Time addMinutes(int amount) {
         int oldMinutes = this.minutes + (this.hours * 60);
         oldMinutes += amount;
         int newHours = (int) oldMinutes / 60;
@@ -48,8 +48,9 @@ public class Time {
             this.hours = newHours;
             this.minutes = newMinutes;
         }
+        return this;
     }
-    public void minusMinutes(int amount) {
+    public Time minusMinutes(int amount) {
         int oldMinutes = this.minutes + (this.hours * 60);
         oldMinutes -= amount;
         int newHours = (int) oldMinutes / 60;
@@ -61,6 +62,7 @@ public class Time {
             this.hours = newHours;
             this.minutes = newMinutes;
         }
+        return this;
     }
     
     public boolean earlierThan(int compareMins) {
