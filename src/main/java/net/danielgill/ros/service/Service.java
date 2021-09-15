@@ -71,9 +71,9 @@ public class Service {
     
     @Override
     public String toString() {
-        if(!isValid()) {
-            return "Service " + ref + " is not valid and therefore cannot be printed.";
-        }
+        //if(!isValid()) {
+        //    return "Service " + ref + " is not valid and therefore cannot be printed.";
+        //}
         
         String output = "";
         if(events.get(0).getType().equals("Sns")) {
@@ -93,9 +93,9 @@ public class Service {
     }
     
     public String toFormattedString() {
-        if(!isValid()) {
-            return "Service " + ref + " is not valid and therefore cannot be processed.";
-        }
+        //if(!isValid()) {
+        //    return "Service " + ref + " is not valid and therefore cannot be processed.";
+        //}
         
         String output = "";
         if(events.get(0).getType().equals("Sns")) {
