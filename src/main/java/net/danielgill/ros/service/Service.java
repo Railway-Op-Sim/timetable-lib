@@ -79,7 +79,7 @@ public class Service {
         if(events.get(0).getType().equals("Sns")) {
             output += ref + ";" + description + ",";
         } else {
-            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + ",";
+            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + power + ",";
         }
 
         int current = 0;
@@ -101,7 +101,7 @@ public class Service {
         if(events.get(0).getType().equals("Sns")) {
             output += ref + ";" + description + "\n";
         } else {
-            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + maxSpeed + "\n";
+            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + power + "\n";
         }
 
         int current = 0;
