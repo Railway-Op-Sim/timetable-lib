@@ -10,6 +10,9 @@ public class Time {
         minutes = Integer.parseInt(split[1]);
     }
     public Time(int minutes) {
+        if(minutes >= 1440) {
+            minutes %= 1440;
+        } 
         hours = (int) minutes / 60;
         this.minutes = (int) minutes % 60;
     }
@@ -39,6 +42,9 @@ public class Time {
     public Time addMinutes(int amount) {
         int oldMinutes = this.minutes + (this.hours * 60);
         oldMinutes += amount;
+        if(oldMinutes >= 1440) {
+            oldMinutes %= 1440;
+        } 
         int newHours = (int) oldMinutes / 60;
         int newMinutes = (int) oldMinutes % 60;
         if(minutes >= 60) {
@@ -53,6 +59,9 @@ public class Time {
     public Time minusMinutes(int amount) {
         int oldMinutes = this.minutes + (this.hours * 60);
         oldMinutes -= amount;
+        if(oldMinutes < 0) {
+            oldMinutes += (1440 * (Math.abs((int) oldMinutes / 1440) + 1));
+        }
         int newHours = (int) oldMinutes / 60;
         int newMinutes = (int) oldMinutes % 60;
         if(newMinutes >= 60 || newMinutes < 0) {
