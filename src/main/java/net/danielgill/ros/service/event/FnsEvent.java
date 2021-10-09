@@ -27,7 +27,7 @@ public class FnsEvent extends ReferenceEvent {
     public FnsEvent newInstance(Event event) {
         if(event instanceof FnsEvent) {
             FnsEvent fnsevent = (FnsEvent) event;
-            return new FnsEvent(new Time(fnsevent.time), fnsevent.ref);
+            return new FnsEvent(new Time(fnsevent.time), new Reference(fnsevent.ref));
         } else {
             return null;
         }

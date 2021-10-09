@@ -34,7 +34,7 @@ public class SnsEvent extends ReferenceEvent {
     public SnsEvent newInstance(Event event) {
         if(event instanceof SnsEvent) {
             SnsEvent snsEvent = (SnsEvent) event;
-            return new SnsEvent(new Time(snsEvent.time), new Reference(snsEvent.ref.getRef()));
+            return new SnsEvent(new Time(snsEvent.time), new Reference(snsEvent.ref));
         } else {
             return null;
         }
