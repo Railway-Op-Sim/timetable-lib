@@ -7,6 +7,10 @@ public class Reference {
         this.ref = ref;
     }
     
+    public Reference(Reference ref) {
+        this.ref = ref.getRef();
+    }
+    
     public void incrementRef(int increment) {
         ref = ref.substring(0, 2) + String.format("%02d", (Integer.parseInt(ref.substring(2, 4)) + increment));
     }
