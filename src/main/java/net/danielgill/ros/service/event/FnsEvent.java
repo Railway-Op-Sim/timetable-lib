@@ -1,12 +1,13 @@
 package net.danielgill.ros.service.event;
 
+import net.danielgill.ros.service.reference.Reference;
 import net.danielgill.ros.service.time.Time;
 
-public class FnsEvent extends TimedEvent {
+public class FnsEvent extends ReferenceEvent {
     private Time time;
-    private String ref;
+    private Reference ref;
     
-    public FnsEvent(Time time, String ref) {
+    public FnsEvent(Time time, Reference ref) {
         super("Fns");
         this.time = time;
         this.ref = ref;
@@ -14,7 +15,7 @@ public class FnsEvent extends TimedEvent {
     
     @Override
     public String toString() {
-        return time.toString() + ";Fns;" + ref;
+        return time.toString() + ";Fns;" + ref.toString();
     }
     
     @Override
@@ -30,5 +31,10 @@ public class FnsEvent extends TimedEvent {
         } else {
             return null;
         }
+    }
+    
+    @Override
+    public void incrementRef(int increment) {
+        this.ref.incrementRef(increment);
     }
 }

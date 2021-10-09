@@ -3,11 +3,12 @@ package net.danielgill.ros.service;
 import java.util.ArrayList;
 import net.danielgill.ros.service.event.Event;
 import net.danielgill.ros.service.event.TimedEvent;
+import net.danielgill.ros.service.reference.Reference;
 import net.danielgill.ros.service.template.Template;
 import net.danielgill.ros.service.time.Time;
 
 public class Service {
-    private String ref;
+    private Reference ref;
     private String description;
     
     private int power = -1;
@@ -18,7 +19,7 @@ public class Service {
     
     private ArrayList<Event> events;
 
-    public Service(String ref, String description, int startSpeed, int maxSpeed, int mass, int maxBrake, int power) {
+    public Service(Reference ref, String description, int startSpeed, int maxSpeed, int mass, int maxBrake, int power) {
         this.ref = ref;
         this.description = description;
         this.power = power;
@@ -30,13 +31,13 @@ public class Service {
         events = new ArrayList<>();
     }
     
-    public Service(String ref, String description) {
+    public Service(Reference ref, String description) {
         this.ref = ref;
         this.description = description;
         events = new ArrayList<>();
     }
     
-    public void setDetails(String ref, String description) {
+    public void setDetails(Reference ref, String description) {
         this.ref = ref;
         this.description = description;
         events = new ArrayList<>();
@@ -117,7 +118,7 @@ public class Service {
     public boolean isValid() {
         String output = "[VALIDATION ERROR] ";
         
-        if(ref.isBlank()) {
+        if(ref.getRef().isBlank()) {
             System.out.println(output + "Reference does not exist for a service.");
             return false;
         }
@@ -147,7 +148,7 @@ public class Service {
         return true;
     }
 
-    public String getRef() {
+    public Reference getRef() {
         return ref;
     }
 
