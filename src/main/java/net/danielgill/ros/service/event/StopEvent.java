@@ -1,49 +1,51 @@
 package net.danielgill.ros.service.event;
 
+import java.util.ArrayList;
 import net.danielgill.ros.service.location.NamedLocation;
 import net.danielgill.ros.service.time.Time;
 
 public class StopEvent extends TimedEvent {
-    private Time arrTime;
-    private Time depTime;
+    private ArrayList<Time> times;
     private NamedLocation location;
     
     public StopEvent(Time arrTime, Time depTime, NamedLocation location) {
         super("stop");
-        this.arrTime = arrTime;
-        this.depTime = depTime;
+        times = new ArrayList<>();
+        times.add(arrTime);
+        times.add(depTime);
         this.location = location;
     }
     public StopEvent(Time arrTime, NamedLocation location) {
         super("stop");
-        this.arrTime = arrTime;
+        times = new ArrayList<>();
+        times.add(arrTime);
         this.location = location;
     }
     public StopEvent(NamedLocation location, Time depTime) {
         super("stop");
-        this.depTime = depTime;
+        times = new ArrayList<>();
+        times.add(depTime);
+        this.location = location;
+    }
+    private StopEvent(ArrayList<Time> times, NamedLocation location) {
+        super("stop");
+        this.times = times;
         this.location = location;
     }
     
     @Override
     public String toString() {
         String output = "";
-        if(arrTime != null) {
-            output += arrTime.toString() + ";";
-        }
-        if(depTime != null) {
-            output += depTime.toString() + ";";
+        for(Time time : times) {
+            output += time.toString() + ";";
         }
         return output + location.toString();
     }
 
     @Override
     public void incrementTime(int minutes) {
-        if(arrTime != null) {
-            this.arrTime.addMinutes(minutes);
-        }
-        if(depTime != null) {
-            this.depTime.addMinutes(minutes);
+        for(Time time : times) {
+            time.addMinutes(minutes);
         }
     }
 
@@ -51,7 +53,11 @@ public class StopEvent extends TimedEvent {
     public StopEvent newInstance(Event event) {
         if(event instanceof StopEvent) {
             StopEvent stopevent = (StopEvent) event;
-            return new StopEvent(new Time(stopevent.arrTime), new Time(stopevent.depTime), stopevent.location);
+            ArrayList<Time> tempTimes = new ArrayList<>();
+            for(Time time : times) {
+                tempTimes.add(new Time(time));
+            }
+            return new StopEvent(tempTimes, stopevent.location);
         } else {
             return null;
         }
