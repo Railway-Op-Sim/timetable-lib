@@ -28,4 +28,11 @@ public class CdtEvent extends TimedEvent {
             return null;
         }
     }
+
+    @Override
+    public void validateEvent() throws EventInvalidException {
+        if(time == null) {
+            throw new EventInvalidException(this.toString());
+        }
+    }
 }

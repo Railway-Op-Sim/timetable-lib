@@ -2,6 +2,7 @@ package net.danielgill.ros.service;
 
 import java.util.ArrayList;
 import net.danielgill.ros.service.event.Event;
+import net.danielgill.ros.service.event.EventInvalidException;
 import net.danielgill.ros.service.event.ReferenceEvent;
 import net.danielgill.ros.service.event.TimedEvent;
 import net.danielgill.ros.service.reference.Reference;
@@ -136,9 +137,13 @@ public class Service {
             throw new ServiceInvalidException("No events exist for service.", ref);
         }
         
-        //TODO: Check each event with its own isValid() method.
-        
-        //TODO: Use new method to sort list of events.
+        for(Event event : events) {
+            try {
+                event.validateEvent();
+            } catch (EventInvalidException e) {
+                throw new ServiceInvalidException("Error in event " + e.getEventString(), ref);
+            }
+        }
         
         Event startEvent = getEventFromIndex(0);
         if(startEvent.getType().equals("Sns")) {

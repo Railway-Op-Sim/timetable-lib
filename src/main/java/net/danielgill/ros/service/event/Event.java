@@ -12,6 +12,8 @@ public abstract class Event {
     
     public abstract Event newInstance(Event event);
 
+    public abstract void validateEvent() throws EventInvalidException;
+
     public String getType() {
         return type;
     }
