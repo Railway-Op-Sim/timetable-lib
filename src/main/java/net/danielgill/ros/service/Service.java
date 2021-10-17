@@ -9,6 +9,10 @@ import net.danielgill.ros.service.reference.Reference;
 import net.danielgill.ros.service.template.Template;
 import net.danielgill.ros.service.time.Time;
 
+/**
+ * Represents a single service within a timetable.
+ * @author Daniel Gill
+ */
 public class Service {
     private Reference ref;
     private String description;
@@ -21,6 +25,16 @@ public class Service {
     
     private ArrayList<Event> events;
 
+    /**
+     * Creates a service from a reference, description and the service data.
+     * @param ref The reference for a given service.
+     * @param description The description for a given service.
+     * @param startSpeed The service's start speed.
+     * @param maxSpeed The service's max speed.
+     * @param mass The service's mass.
+     * @param maxBrake The service's max braking force.
+     * @param power The service's power.
+     */
     public Service(Reference ref, String description, int startSpeed, int maxSpeed, int mass, int maxBrake, int power) {
         this.ref = ref;
         this.description = description;
