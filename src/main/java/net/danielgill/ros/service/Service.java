@@ -46,13 +46,27 @@ public class Service {
         
         events = new ArrayList<>();
     }
-    
+
+    /**
+     * Creates a service from a reference and description.
+     * @param ref The reference for a given service.
+     * @param description The description for a given service.
+     */
     public Service(Reference ref, String description) {
         this.ref = ref;
         this.description = description;
         events = new ArrayList<>();
     }
+<<<<<<< Updated upstream
     
+=======
+
+    /**
+     * Sets the reference and description for a given service and creates new ArrayList.
+     * @deprecated This method should not be used, create a new instance of Service instead.
+     */
+    @Deprecated(since = "v1.2.0-beta")
+>>>>>>> Stashed changes
     public void setDetails(Reference ref, String description) {
         this.ref = ref;
         this.description = description;
