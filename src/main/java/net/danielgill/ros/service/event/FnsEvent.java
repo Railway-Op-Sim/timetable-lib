@@ -32,8 +32,15 @@ public class FnsEvent extends ReferenceEvent {
             return null;
         }
     }
-    
-    @Override
+
+	@Override
+	public void validateEvent() throws EventInvalidException {
+        if(time == null || ref == null) {
+            throw new EventInvalidException(this.toString());
+        }
+	}
+
+	@Override
     public void incrementRef(int increment) {
         this.ref.incrementRef(increment);
     }

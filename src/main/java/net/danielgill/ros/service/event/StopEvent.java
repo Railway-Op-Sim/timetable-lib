@@ -62,4 +62,11 @@ public class StopEvent extends TimedEvent {
             return null;
         }
     }
+
+	@Override
+	public void validateEvent() throws EventInvalidException {
+        if(times.isEmpty() || location == null) {
+            throw new EventInvalidException(this.toString());
+        }
+	}
 }

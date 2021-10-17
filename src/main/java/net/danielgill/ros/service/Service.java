@@ -2,6 +2,7 @@ package net.danielgill.ros.service;
 
 import java.util.ArrayList;
 import net.danielgill.ros.service.event.Event;
+import net.danielgill.ros.service.event.EventInvalidException;
 import net.danielgill.ros.service.event.ReferenceEvent;
 import net.danielgill.ros.service.event.TimedEvent;
 import net.danielgill.ros.service.reference.Reference;
@@ -84,13 +85,10 @@ public class Service {
             this.events.add(tempEvent);
         }
     }
-    
-    @Override
-    public String toString() {
-        //if(!isValid()) {
-        //    return "Service " + ref + " is not valid and therefore cannot be printed.";
-        //}
-        
+
+    public String toTimetableString() throws ServiceInvalidException {
+        validateService();
+
         String output = "";
         if(events.get(0).getType().equals("Sns")) {
             output += ref + ";" + description + ",";
@@ -108,10 +106,8 @@ public class Service {
         return output;
     }
     
-    public String toFormattedString() {
-        //if(!isValid()) {
-        //    return "Service " + ref + " is not valid and therefore cannot be processed.";
-        //}
+    public String toFormattedString() throws ServiceInvalidException {
+        validateService();
         
         String output = "";
         if(events.get(0).getType().equals("Sns")) {
@@ -130,37 +126,33 @@ public class Service {
         return output;
     }
     
-    public boolean isValid() {
-        String output = "[VALIDATION ERROR] ";
-        
+    public void validateService() throws ServiceInvalidException {
         if(ref.getRef().isBlank()) {
-            System.out.println(output + "Reference does not exist for a service.");
-            return false;
+            throw new ServiceInvalidException("Reference does not exist for a service.");
         }
         if(description.isBlank()) {
-            System.out.println(output + "Description is not valid for service " + ref + ".");
-            return false;
+            throw new ServiceInvalidException("Description is blank for service.", ref);
         }
         if(events.isEmpty()) {
-            System.out.println(output + "No events exist for service " + ref + ".");
-            return false;
+            throw new ServiceInvalidException("No events exist for service.", ref);
         }
         
-        //TODO: Check each event with its own isValid() method.
-        
-        //TODO: Use new method to sort list of events.
+        for(Event event : events) {
+            try {
+                event.validateEvent();
+            } catch (EventInvalidException e) {
+                throw new ServiceInvalidException("Error in event " + e.getEventString(), ref);
+            }
+        }
         
         Event startEvent = getEventFromIndex(0);
         if(startEvent.getType().equals("Sns")) {
             
         } else {
             if(power <= 0 || mass <= 0 || maxSpeed <= 0 || maxBrake <= 0 || startSpeed == -1) {
-                System.out.println(output + "Data values for service " + ref + " are missing or incorrect.");
-                return false;
+                throw new ServiceInvalidException("One or more data values for service are missing or incorrect.", ref);
             }
         }
-        
-        return true;
     }
 
     public Reference getRef() {
@@ -194,12 +186,4 @@ public class Service {
     public Event getEventFromIndex(int index) {
         return events.get(index);
     }
-    
-    public ArrayList<Event> getNonStartFinishEvents() {
-        ArrayList<Event> tempEvents = events;
-        tempEvents.remove(0);
-        tempEvents.remove(tempEvents.size() - 1);
-        return tempEvents;
-    }
-    
 }

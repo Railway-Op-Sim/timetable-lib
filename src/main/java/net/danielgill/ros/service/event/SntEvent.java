@@ -39,4 +39,11 @@ public class SntEvent extends TimedEvent {
             return null;
         }
     }
+
+	@Override
+	public void validateEvent() throws EventInvalidException {
+        if(time == null || location == null) {
+            throw new EventInvalidException(this.toString());
+        }
+	}
 }
