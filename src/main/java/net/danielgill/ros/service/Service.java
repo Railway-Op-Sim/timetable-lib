@@ -39,6 +39,7 @@ public class Service {
         events = new ArrayList<>();
     }
     
+    @Deprecated(since = "v1.2.0-beta")
     public void setDetails(Reference ref, String description) {
         this.ref = ref;
         this.description = description;
