@@ -57,22 +57,27 @@ public class Service {
         this.description = description;
         events = new ArrayList<>();
     }
-<<<<<<< Updated upstream
-    
-=======
 
     /**
      * Sets the reference and description for a given service and creates new ArrayList.
      * @deprecated This method should not be used, create a new instance of Service instead.
      */
-    @Deprecated(since = "v1.2.0-beta")
->>>>>>> Stashed changes
+    @Deprecated(since = "v1.2.0-alpha")
     public void setDetails(Reference ref, String description) {
         this.ref = ref;
         this.description = description;
         events = new ArrayList<>();
     }
-    
+
+
+    /**
+     * Sets the data for a given service.
+     * @param startSpeed The service's start speed.
+     * @param maxSpeed The service's max speed.
+     * @param mass The service's mass.
+     * @param maxBrake The service's max braking force.
+     * @param power The service's power.
+     */
     public void setData(int startSpeed, int maxSpeed, int mass, int maxBrake, int power) {
         this.startSpeed = startSpeed;
         this.maxSpeed = maxSpeed;
@@ -80,7 +85,12 @@ public class Service {
         this.maxBrake = maxBrake;
         this.power = power;
     }
-    
+
+    /**
+     * Adds an event at the end of the current list of events.
+     * @param event The event object to be added.
+     * @see Event
+     */
     public void addEvent(Event event) {
         try {
             this.events.add(event);
@@ -88,7 +98,14 @@ public class Service {
             System.err.println(e.getMessage());
         }
     }
-    
+
+    /**
+     * Adds a template's events to the service events, with times determined by the start time.
+     * @param template The template object to be added to the events.
+     * @param startTime The time which will be added to the instance of the template.
+     * @see Template
+     * @see TimedEvent
+     */
     public void addTemplate(Template template, Time startTime) {
         Template temptemplate = new Template(template);
         for(int i = 0; i < temptemplate.getEventCount(); i++) {
@@ -99,7 +116,16 @@ public class Service {
             this.events.add(tempEvent);
         }
     }
-    
+
+    /**
+     * Adds a template's events to the service events, with times and references determined by start time and increment.
+     * @param template The template object to be added to the events.
+     * @param startTime The time which will be added to the instance of the template.
+     * @param increment The increment which will be added to the instance of all ReferenceEvents.
+     * @see Template
+     * @see TimedEvent
+     * @see ReferenceEvent
+     */
     public void addTemplate(Template template, Time startTime, int increment) {
         Template temptemplate = new Template(template);
         for(int i = 0; i < temptemplate.getEventCount(); i++) {
@@ -114,6 +140,12 @@ public class Service {
         }
     }
 
+
+    /**
+     * Provides a string output of the service for a .ttb file format.
+     * @return A String containing the service ready to be inserted into a .ttb file.
+     * @throws ServiceInvalidException Throws this if the service is invalid, should be caught and not added to a .ttb file.
+     */
     public String toTimetableString() throws ServiceInvalidException {
         validateService();
 
@@ -133,7 +165,12 @@ public class Service {
         
         return output;
     }
-    
+
+    /**
+     * Provides a string output of the service in a readable format.
+     * @return A string containing the service in a readable format.
+     * @throws ServiceInvalidException Throws this if the service is invalid, should be caught.
+     */
     public String toFormattedString() throws ServiceInvalidException {
         validateService();
         
@@ -153,7 +190,11 @@ public class Service {
         
         return output;
     }
-    
+
+    /**
+     * Validates the service, and throws a ServiceInvalidException if it is invalid.
+     * @throws ServiceInvalidException Throws this if the service is invalid.
+     */
     public void validateService() throws ServiceInvalidException {
         if(ref.getRef().isBlank()) {
             throw new ServiceInvalidException("Reference does not exist for a service.");
@@ -183,34 +224,62 @@ public class Service {
         }
     }
 
+    /**
+     * Returns a reference for the service.
+     * @return The reference for the service.
+     */
     public Reference getRef() {
         return ref;
     }
 
+    /**
+     * Returns the service description.
+     * @return The description for the service.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * @return The power of the service.
+     */
     public int getPower() {
         return power;
     }
 
+    /**
+     * @return The mass of the service.
+     */
     public int getMass() {
         return mass;
     }
 
+    /**
+     * @return The max speed of the service.
+     */
     public int getMaxSpeed() {
         return maxSpeed;
     }
 
+    /**
+     * @return The max braking of the service.
+     */
     public int getMaxBrake() {
         return maxBrake;
     }
 
+    /**
+     * @return The start speed of the service.
+     */
     public int getStartSpeed() {
         return startSpeed;
     }
-    
+
+    /**
+     * Returns an Event from the service's event array list from a given index.
+     * @param index The index of the event array list.
+     * @return The event located in the service's list of events.
+     */
     public Event getEventFromIndex(int index) {
         return events.get(index);
     }
