@@ -7,11 +7,20 @@ import net.danielgill.ros.service.location.StartLocation;
 import net.danielgill.ros.service.reference.Reference;
 import net.danielgill.ros.service.time.Time;
 
+/**
+ * A class which can create an event based on a String input.
+ * @author Daniel Gill
+ */
 public class ParseEvent {
 	public ParseEvent() {
 
 	}
 
+	/**
+	 * Creates an instance of the correct Event class based on a given string.
+	 * @param eventString The string in the .ttb format for a single event.
+	 * @return The event instance that represents the given string.
+	 */
 	public Event getEventFromString(String eventString) {
 		//TODO: Add more events here when they are added the event package.
 		String[] eventSplit = eventString.split(";");
