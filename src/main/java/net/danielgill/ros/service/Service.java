@@ -57,7 +57,7 @@ public class Service {
         this.description = description;
         events = new ArrayList<>();
     }
-
+  
     /**
      * Sets the reference and description for a given service and creates new ArrayList.
      * @deprecated This method should not be used, create a new instance of Service instead.
