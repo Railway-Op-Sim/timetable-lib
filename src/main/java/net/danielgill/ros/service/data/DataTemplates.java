@@ -149,16 +149,12 @@ public class DataTemplates {
         C379_4 = addTemplateR("C379_4", 161, 179, 119, 1200);
         C380_0_3 = addTemplateR("C380/0_3", 161, 144, 96, 1000);
         C380_1_4 = addTemplateR("C380/1_4", 161, 193, 128, 1000);
-        C385_3 = addTemplateR("C385_3", 161, 0, 0, 0);
-        C385_4 = addTemplateR("C385_4", 161, 0, 0, 0);
         C387_1_4 = addTemplateR("C387/1_4", 177, 179, 119, 1500);
         C387_2_4 = addTemplateR("C387/2_4", 177, 179, 119, 1500);
         C387_3_4 = addTemplateR("C387/3_4", 177, 179, 119, 1500);
         C390_0_9 = addTemplateR("C390/0_9", 201, 524, 403, 4876);
         C390_1_11 = addTemplateR("C390/1_11", 201, 641, 427, 4876);
         C395_6 = addTemplateR("C395_6", 225, 309, 206, 1680);
-        C397_5 = addTemplateR("C397_5", 201, 0, 0, 0);
-        C398_3 = addTemplateR("C398_3", 0, 0, 0, 0);
         C399_3 = addTemplateR("C399_3", 48, 71, 35, 869);
         C442_5 = addTemplateR("C442_5", 161, 235, 118, 1199);
         C444_5 = addTemplateR("C444_5", 161, 224, 112, 2000);
@@ -176,8 +172,6 @@ public class DataTemplates {
         C508_3 = addTemplateR("C508_3", 121, 108, 36, 656);
         C700_8 = addTemplateR("C700_8", 161, 305, 152, 3300);
         C707_5 = addTemplateR("C707_5", 161, 202, 101, 1200);
-        C710_1_4 = addTemplateR("C710/1_4", 121, 166, 83, 0);
-        C710_2_4 = addTemplateR("C710/2_4", 121, 166, 83, 0);
         C717_6 = addTemplateR("C717_6", 161, 228, 114, 895);
         C801_5 = addTemplateR("C801_5", 201, 1148, 574, 701);
         C801_9 = addTemplateR("C801_9", 201, 3720, 1860, 701);
