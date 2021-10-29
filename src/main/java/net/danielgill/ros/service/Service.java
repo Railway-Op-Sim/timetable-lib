@@ -2,6 +2,7 @@ package net.danielgill.ros.service;
 
 import java.util.ArrayList;
 import net.danielgill.ros.service.data.Data;
+import net.danielgill.ros.service.data.DataTemplate;
 import net.danielgill.ros.service.event.Event;
 import net.danielgill.ros.service.event.EventInvalidException;
 import net.danielgill.ros.service.event.ReferenceEvent;
@@ -89,6 +90,10 @@ public class Service {
     
     public void setData(Data data) {
         this.data = data;
+    }
+    
+    public void addDataTemplate(DataTemplate dt, int startSpeed) {
+        this.data = new Data(startSpeed, dt.getData());
     }
 
     /**
