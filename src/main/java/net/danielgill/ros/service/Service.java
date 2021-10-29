@@ -1,6 +1,7 @@
 package net.danielgill.ros.service;
 
 import java.util.ArrayList;
+import net.danielgill.ros.service.data.Data;
 import net.danielgill.ros.service.event.Event;
 import net.danielgill.ros.service.event.EventInvalidException;
 import net.danielgill.ros.service.event.ReferenceEvent;
@@ -16,12 +17,7 @@ import net.danielgill.ros.service.time.Time;
 public class Service {
     private Reference ref;
     private String description;
-    
-    private int power = -1;
-    private int mass = -1;
-    private int maxSpeed = -1;
-    private int maxBrake = -1;
-    private int startSpeed = -1;
+    private Data data;
     
     private ArrayList<Event> events;
 
@@ -38,12 +34,21 @@ public class Service {
     public Service(Reference ref, String description, int startSpeed, int maxSpeed, int mass, int maxBrake, int power) {
         this.ref = ref;
         this.description = description;
-        this.power = power;
-        this.mass = mass;
-        this.maxSpeed = maxSpeed;
-        this.maxBrake = maxBrake;
-        this.startSpeed = startSpeed;
-        
+        this.data = new Data(startSpeed, maxSpeed, mass, maxBrake, power);
+        events = new ArrayList<>();
+    }
+    
+    public Service(Reference ref, String description, Data data) {
+        this.ref = ref;
+        this.description = description;
+        this.data = data;
+        events = new ArrayList<>();
+    }
+    
+    public Service(Reference ref, String description, Data data, int startSpeed) {
+        this.ref = ref;
+        this.description = description;
+        this.data = new Data(startSpeed, data);
         events = new ArrayList<>();
     }
 
@@ -79,11 +84,11 @@ public class Service {
      * @param power The service's power.
      */
     public void setData(int startSpeed, int maxSpeed, int mass, int maxBrake, int power) {
-        this.startSpeed = startSpeed;
-        this.maxSpeed = maxSpeed;
-        this.mass = mass;
-        this.maxBrake = maxBrake;
-        this.power = power;
+        this.data = new Data(startSpeed, maxSpeed, mass, maxBrake, power);
+    }
+    
+    public void setData(Data data) {
+        this.data = data;
     }
 
     /**
@@ -153,7 +158,7 @@ public class Service {
         if(events.get(0).getType().equals("Sns")) {
             output += ref + ";" + description + ",";
         } else {
-            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + power + ",";
+            output += ref + ";" + description + ";" + data.toString() + ",";
         }
 
         int current = 0;
@@ -178,7 +183,7 @@ public class Service {
         if(events.get(0).getType().equals("Sns")) {
             output += ref + ";" + description + "\n";
         } else {
-            output += ref + ";" + description + ";" + startSpeed + ";" + maxSpeed + ";" + mass + ";" + maxBrake + ";" + power + "\n";
+            output += ref + ";" + description + ";" + data.toString() + "\n";
         }
 
         int current = 0;
@@ -218,9 +223,7 @@ public class Service {
         if(startEvent.getType().equals("Sns")) {
             
         } else {
-            if(power <= 0 || mass <= 0 || maxSpeed <= 0 || maxBrake <= 0 || startSpeed == -1) {
-                throw new ServiceInvalidException("One or more data values for service are missing or incorrect.", ref);
-            }
+            data.validate(ref);
         }
     }
 
@@ -238,41 +241,6 @@ public class Service {
      */
     public String getDescription() {
         return description;
-    }
-
-    /**
-     * @return The power of the service.
-     */
-    public int getPower() {
-        return power;
-    }
-
-    /**
-     * @return The mass of the service.
-     */
-    public int getMass() {
-        return mass;
-    }
-
-    /**
-     * @return The max speed of the service.
-     */
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
-
-    /**
-     * @return The max braking of the service.
-     */
-    public int getMaxBrake() {
-        return maxBrake;
-    }
-
-    /**
-     * @return The start speed of the service.
-     */
-    public int getStartSpeed() {
-        return startSpeed;
     }
 
     /**
