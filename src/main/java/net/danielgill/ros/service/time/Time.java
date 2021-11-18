@@ -117,6 +117,40 @@ public class Time {
         return this;
     }
     
+    public Time getNewAddMinutes(int amount) {
+        int oldMinutes = this.minutes + (this.hours * 60);
+        oldMinutes += amount;
+        if(oldMinutes >= 1440) {
+            oldMinutes %= 1440;
+        } 
+        int newHours = (int) oldMinutes / 60;
+        int newMinutes = (int) oldMinutes % 60;
+        Time t;
+        if(minutes >= 60) {
+            t = new Time(((int) newMinutes % 60) - ((int) newMinutes/60), ((int) newMinutes/60) + newHours);
+        } else {
+            t = new Time(newMinutes, newHours);
+        }
+        return t;
+    }
+    
+    public Time getNewMinusMintues(int amount) {
+        int oldMinutes = this.minutes + (this.hours * 60);
+        oldMinutes -= amount;
+        if(oldMinutes < 0) {
+            oldMinutes += (1440 * (Math.abs((int) oldMinutes / 1440) + 1));
+        }
+        int newHours = (int) oldMinutes / 60;
+        int newMinutes = (int) oldMinutes % 60;
+        Time t;
+        if(newMinutes >= 60 || newMinutes < 0) {
+            t = new Time(((int) newMinutes % 60) - ((int) newMinutes/60), ((int) newMinutes/60) + newHours);
+        } else {
+            t = new Time(newMinutes, newHours);
+        }
+        return t;
+    }
+    
     public boolean earlierThan(int compareMins) {
         int totalMins = this.minutes + (this.hours * 60);
         return totalMins < compareMins;
