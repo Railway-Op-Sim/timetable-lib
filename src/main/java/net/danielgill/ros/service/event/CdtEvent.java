@@ -2,7 +2,7 @@ package net.danielgill.ros.service.event;
 
 import net.danielgill.ros.service.time.Time;
 
-public class CdtEvent extends TimedEvent {
+public class CdtEvent extends Event implements TimedEvent {
     private Time time;
     
     public CdtEvent(Time time) {
