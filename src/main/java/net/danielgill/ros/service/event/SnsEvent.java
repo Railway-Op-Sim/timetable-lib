@@ -3,7 +3,7 @@ package net.danielgill.ros.service.event;
 import net.danielgill.ros.service.reference.Reference;
 import net.danielgill.ros.service.time.Time;
 
-public class SnsEvent extends ReferenceEvent {
+public class SnsEvent extends Event implements ReferenceEvent,TimedEvent {
     private Time time;
     private Reference ref;
     

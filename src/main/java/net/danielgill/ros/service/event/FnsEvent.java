@@ -3,7 +3,7 @@ package net.danielgill.ros.service.event;
 import net.danielgill.ros.service.reference.Reference;
 import net.danielgill.ros.service.time.Time;
 
-public class FnsEvent extends ReferenceEvent {
+public class FnsEvent extends Event implements ReferenceEvent, TimedEvent {
     private Time time;
     private Reference ref;
     
@@ -33,12 +33,12 @@ public class FnsEvent extends ReferenceEvent {
         }
     }
 
-	@Override
-	public void validateEvent() throws EventInvalidException {
+    @Override
+    public void validateEvent() throws EventInvalidException {
         if(time == null || ref == null) {
             throw new EventInvalidException(this.toString());
         }
-	}
+    }
 
 	@Override
     public void incrementRef(int increment) {

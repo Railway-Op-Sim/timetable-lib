@@ -3,7 +3,7 @@ package net.danielgill.ros.service.event;
 import net.danielgill.ros.service.location.StartLocation;
 import net.danielgill.ros.service.time.Time;
 
-public class SntEvent extends TimedEvent {
+public class SntEvent extends Event implements TimedEvent {
     private Time time;
     private StartLocation location;
     

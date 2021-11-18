@@ -3,7 +3,7 @@ package net.danielgill.ros.service.event;
 import net.danielgill.ros.service.location.Location;
 import net.danielgill.ros.service.time.Time;
 
-public class FerEvent extends TimedEvent {
+public class FerEvent extends Event implements TimedEvent {
     private Time time;
     private Location location;
     

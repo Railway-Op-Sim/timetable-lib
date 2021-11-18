@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import net.danielgill.ros.service.location.NamedLocation;
 import net.danielgill.ros.service.time.Time;
 
-public class StopEvent extends TimedEvent {
+public class StopEvent extends Event implements TimedEvent {
     private ArrayList<Time> times;
     private NamedLocation location;
     
