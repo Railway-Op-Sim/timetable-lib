@@ -2,23 +2,53 @@ package net.danielgill.ros.service.data;
 
 import java.util.ArrayList;
 
+/**
+ * Contains a list of data templates, and also allows the user to add their own data templates.
+ * @author Daniel Gill
+ */
 public class DataTemplates {
     public ArrayList<DataTemplate> templates;
     
+    /**
+     * Adds a data template created from the keyword and data points.
+     * @param keyword
+     * @param maxSpeed
+     * @param mass
+     * @param maxBrake
+     * @param power 
+     */
     public void addTemplate(String keyword, int maxSpeed, int mass, int maxBrake, int power) {
         templates.add(new DataTemplate(keyword, maxSpeed, mass, maxBrake, power));
     }
     
+    /**
+     * Adds a data template and returns the instance of it.
+     * @param keyword
+     * @param maxSpeed
+     * @param mass
+     * @param maxBrake
+     * @param power
+     * @return The instance of the data template.
+     */
     private DataTemplate addTemplateR(String keyword, int maxSpeed, int mass, int maxBrake, int power) {
         DataTemplate dt = new DataTemplate(keyword, maxSpeed, mass, maxBrake, power);
         templates.add(dt);
         return dt;
     }
     
+    /**
+     * Adds a data template from a data template instance.
+     * @param dt 
+     */
     public void addTemplate(DataTemplate dt) {
         templates.add(dt);
     }
     
+    /**
+     * Returns the data template given a specific keyword.
+     * @param keyword The keyword to be searched for.
+     * @return DataTemplate
+     */
     public DataTemplate getTemplate(String keyword) {
         for(int i = 0; i < templates.size(); i++) {
             if(templates.get(i).keywordEqual(keyword)) {
