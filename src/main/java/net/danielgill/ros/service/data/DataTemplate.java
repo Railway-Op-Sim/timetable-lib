@@ -28,6 +28,14 @@ public class DataTemplate {
     public Data getData(){
         return data;
     }
+
+    /**
+     * Gets the keyword for a given data template.
+     * @return The keyword
+     */
+    public String getKeyword() {
+        return keyword;
+    }
     
     /**
      * Checks if the keyword is equal to a given string.

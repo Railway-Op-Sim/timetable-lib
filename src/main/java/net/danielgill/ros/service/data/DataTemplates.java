@@ -37,11 +37,16 @@ public class DataTemplates {
     }
     
     /**
-     * Adds a data template from a data template instance.
+     * Adds a data template from a data template instance. Will override if a template already exists
      * @param dt 
      */
     public void addTemplate(DataTemplate dt) {
-        templates.add(dt);
+        int exists = getIndexOfTemplate(dt.getKeyword());
+        if(exists != -1) {
+            templates.set(exists, dt);
+        } else {
+            templates.add(dt);
+        }
     }
     
     /**
@@ -56,6 +61,20 @@ public class DataTemplates {
             }
         }
         return null;
+    }
+
+    /**
+     * Returns the index of a given data template.
+     * @param keyword The template keyword.
+     * @return The index in the arraylist.
+     */
+    private int getIndexOfTemplate(String keyword) {
+        for(int i = 0; i < templates.size(); i++) {
+            if(templates.get(i).keywordEqual(keyword)) {
+                return i;
+            }
+        }
+        return -1;
     }
     
     public DataTemplates() {
