@@ -37,4 +37,9 @@ public class ServiceInvalidException extends Exception {
 	public String getRef() {
 		return this.ref.getRef();
 	}
+
+	@Override
+	public String toString() {
+		return "[" + this.ref.getRef() + "]: " + this.getMessage();
+	}
 }

@@ -33,7 +33,7 @@ public class Reference {
 
     /**
      * Returns the reference as a String.
-     * @return The String containg the reference.
+     * @return The String containing the reference.
      */
     @Override
     public String toString() {
@@ -42,7 +42,7 @@ public class Reference {
 
     /**
      * Returns the reference as a String.
-     * @return The String containg the reference.
+     * @return The String containing the reference.
      */
     public String getRef() {
         return ref;

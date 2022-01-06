@@ -117,6 +117,11 @@ public class Time {
         return this;
     }
     
+    /**
+     * Adds a number of minutes to the time instance, then returns a new instance without updating.
+     * @param amount An integer of minutes to be added.
+     * @return The instance of Time with minutes added.
+     */
     public Time getNewAddMinutes(int amount) {
         int oldMinutes = this.minutes + (this.hours * 60);
         oldMinutes += amount;
@@ -134,6 +139,11 @@ public class Time {
         return t;
     }
     
+    /**
+     * Subtracts a number of minutes to the time instance, then returns a new instance without updating.
+     * @param amount An integer of minutes to be subtracted.
+     * @return An instance of Time with minutes subtracted.
+     */
     public Time getNewMinusMintues(int amount) {
         int oldMinutes = this.minutes + (this.hours * 60);
         oldMinutes -= amount;
