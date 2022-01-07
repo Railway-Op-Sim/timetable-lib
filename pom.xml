@@ -11,17 +11,6 @@
             <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
         </license>
     </licenses>
-    <developers>
-        <developer>
-            <name>Daniel Gill</name>
-            <email>mail@danielgill.net</email>
-        </developer>
-    </developers>
-    <scm>
-        <connection>scm:git:git@github.com:Railway-Op-Sim/ros-service-library-java.git</connection>
-        <developerConnection>scm:git:ssh://github.com:simpligility/ossrh-demo.git</developerConnection>
-        <url>https://github.com/Railway-Op-Sim/ros-service-library-java/tree/master</url>
-    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>
@@ -42,4 +31,11 @@
             </plugin>
         </plugins>
     </build>
+    <distributionManagement>
+        <repository>
+          <id>github</id>
+          <name>GitHub Railway-Op-Sim Apache Maven Packages</name>
+          <url>https://maven.pkg.github.com/railway-op-sim/timetable-lib</url>
+        </repository>
+     </distributionManagement>
 </project>
