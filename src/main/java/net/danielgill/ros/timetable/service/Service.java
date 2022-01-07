@@ -40,6 +40,12 @@ public class Service {
         events = new ArrayList<>();
     }
     
+    /**
+     * Creates a service from a reference, description and the service data.
+     * @param ref The reference for a given service.
+     * @param description The description for a given service.
+     * @param data The service data.
+     */
     public Service(Reference ref, String description, Data data) {
         this.ref = ref;
         this.description = description;
@@ -47,6 +53,13 @@ public class Service {
         events = new ArrayList<>();
     }
     
+    /**
+     * Creates a service from a reference, description, the service data and start speed.
+     * @param ref The reference for a given service.
+     * @param description The description for a given service.
+     * @param data The service data.
+     * @param startSpeed The start speed of the service.
+     */
     public Service(Reference ref, String description, Data data, int startSpeed) {
         this.ref = ref;
         this.description = description;
@@ -89,10 +102,19 @@ public class Service {
         this.data = new Data(startSpeed, maxSpeed, mass, maxBrake, power);
     }
     
+    /**
+     * Sets the data for a given service.
+     * @param data The new data for a given service.
+     */
     public void setData(Data data) {
         this.data = data;
     }
     
+    /**
+     * Adds a data template and starting speed to a service.
+     * @param dt The data template to be added.
+     * @param startSpeed The start speed of the service.
+     */
     public void addDataTemplate(DataTemplate dt, int startSpeed) {
         this.data = new Data(startSpeed, dt.getData());
     }

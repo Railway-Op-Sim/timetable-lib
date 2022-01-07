@@ -5,6 +5,23 @@
     <artifactId>timetable-lib</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
+    <licenses>
+        <license>
+            <name>GNU General Public License v3.0</name>
+            <url>https://www.gnu.org/licenses/gpl-3.0.txt</url>
+        </license>
+    </licenses>
+    <developers>
+        <developer>
+            <name>Daniel Gill</name>
+            <email>mail@danielgill.net</email>
+        </developer>
+    </developers>
+    <scm>
+        <connection>scm:git:git@github.com:Railway-Op-Sim/ros-service-library-java.git</connection>
+        <developerConnection>scm:git:ssh://github.com:simpligility/ossrh-demo.git</developerConnection>
+        <url>https://github.com/Railway-Op-Sim/ros-service-library-java/tree/master</url>
+    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>16</maven.compiler.source>

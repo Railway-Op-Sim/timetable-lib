@@ -1,7 +1,7 @@
 package net.danielgill.ros.timetable.event;
 
 /**
- * An event class that represents any event which has a reference.
+ * An interface for event types that have a reference.
  * @author Daniel Gill
  */
 public interface ReferenceEvent {

@@ -1,7 +1,7 @@
 package net.danielgill.ros.timetable.event;
 
 /**
- * An event class that represents any event which has a time value.
+ * An interface for any event that has a time in it, so that it can be incremented for templates.
  * @author Daniel Gill
  */
 public interface TimedEvent {

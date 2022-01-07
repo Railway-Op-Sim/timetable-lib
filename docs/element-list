@@ -1,4 +1,5 @@
 net.danielgill.ros.service
+net.danielgill.ros.service.data
 net.danielgill.ros.service.event
 net.danielgill.ros.service.location
 net.danielgill.ros.service.parse
