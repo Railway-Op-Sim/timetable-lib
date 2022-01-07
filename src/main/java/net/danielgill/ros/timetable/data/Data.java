@@ -1,7 +1,7 @@
 package net.danielgill.ros.timetable.data;
 
-import net.danielgill.ros.timetable.ServiceInvalidException;
 import net.danielgill.ros.timetable.reference.Reference;
+import net.danielgill.ros.timetable.service.ServiceInvalidException;
 
 public class Data {
     private final int power;

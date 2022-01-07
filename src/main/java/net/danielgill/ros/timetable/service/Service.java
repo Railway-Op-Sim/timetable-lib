@@ -1,4 +1,4 @@
-package net.danielgill.ros.timetable;
+package net.danielgill.ros.timetable.service;
 
 import java.util.ArrayList;
 

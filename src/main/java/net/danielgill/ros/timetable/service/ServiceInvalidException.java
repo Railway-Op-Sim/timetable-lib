@@ -1,4 +1,4 @@
-package net.danielgill.ros.timetable;
+package net.danielgill.ros.timetable.service;
 
 import net.danielgill.ros.timetable.reference.Reference;
 
