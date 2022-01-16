@@ -25,8 +25,7 @@ public class PassEvent extends Event implements TimedEvent {
 
     @Override
     public PassEvent newInstance(Event event) {
-        if(event instanceof PassEvent) {
-            PassEvent passevent = (PassEvent) event;
+        if(event instanceof PassEvent passevent) {
             return new PassEvent(new Time(passevent.time), passevent.location);
         } else {
             return null;

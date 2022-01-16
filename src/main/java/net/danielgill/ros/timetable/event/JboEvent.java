@@ -20,8 +20,7 @@ public class JboEvent extends Event implements TimedEvent, ReferenceEvent {
 
     @Override
     public Event newInstance(Event event) {
-        if(event instanceof JboEvent) {
-            JboEvent jboevent = (JboEvent) event;
+        if(event instanceof JboEvent jboevent) {
             return new JboEvent(new Time(jboevent.time), new Reference(jboevent.ref));
         } else {
             return null;

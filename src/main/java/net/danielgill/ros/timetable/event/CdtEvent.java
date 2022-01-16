@@ -21,8 +21,7 @@ public class CdtEvent extends Event implements TimedEvent {
 
     @Override
     public CdtEvent newInstance(Event event) {
-        if(event instanceof CdtEvent) {
-            CdtEvent cdtevent = (CdtEvent) event;
+        if(event instanceof CdtEvent cdtevent) {
             return new CdtEvent(new Time(cdtevent.time));
         } else {
             return null;

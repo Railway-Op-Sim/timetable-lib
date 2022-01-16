@@ -52,8 +52,7 @@ public class StopEvent extends Event implements TimedEvent {
 
     @Override
     public StopEvent newInstance(Event event) {
-        if(event instanceof StopEvent) {
-            StopEvent stopevent = (StopEvent) event;
+        if(event instanceof StopEvent stopevent) {
             ArrayList<Time> tempTimes = new ArrayList<>();
             for(Time time : times) {
                 tempTimes.add(new Time(time));

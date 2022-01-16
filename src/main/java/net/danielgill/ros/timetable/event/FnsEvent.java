@@ -25,8 +25,7 @@ public class FnsEvent extends Event implements ReferenceEvent, TimedEvent {
 
     @Override
     public FnsEvent newInstance(Event event) {
-        if(event instanceof FnsEvent) {
-            FnsEvent fnsevent = (FnsEvent) event;
+        if(event instanceof FnsEvent fnsevent) {
             return new FnsEvent(new Time(fnsevent.time), new Reference(fnsevent.ref));
         } else {
             return null;

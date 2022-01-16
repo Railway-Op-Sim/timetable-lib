@@ -32,8 +32,7 @@ public class SntEvent extends Event implements TimedEvent {
 
     @Override
     public SntEvent newInstance(Event event) {
-        if(event instanceof SntEvent) {
-            SntEvent snsevent = (SntEvent) event;
+        if(event instanceof SntEvent snsevent) {
             return new SntEvent(new Time(snsevent.time), snsevent.location);
         } else {
             return null;

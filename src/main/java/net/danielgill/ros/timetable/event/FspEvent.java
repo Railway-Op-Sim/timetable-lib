@@ -20,8 +20,7 @@ public class FspEvent extends Event implements TimedEvent, ReferenceEvent {
 
     @Override
     public Event newInstance(Event event) {
-        if(event instanceof FspEvent) {
-            FspEvent fspevent = (FspEvent) event;
+        if(event instanceof FspEvent fspevent) {
             return new FspEvent(new Time(fspevent.time), new Reference(fspevent.ref));
         } else {
             return null;

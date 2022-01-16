@@ -32,8 +32,7 @@ public class SnsEvent extends Event implements ReferenceEvent,TimedEvent {
 
     @Override
     public SnsEvent newInstance(Event event) {
-        if(event instanceof SnsEvent) {
-            SnsEvent snsEvent = (SnsEvent) event;
+        if(event instanceof SnsEvent snsEvent) {
             return new SnsEvent(new Time(snsEvent.time), new Reference(snsEvent.ref));
         } else {
             return null;

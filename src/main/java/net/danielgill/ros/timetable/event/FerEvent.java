@@ -25,8 +25,7 @@ public class FerEvent extends Event implements TimedEvent {
 
     @Override
     public FerEvent newInstance(Event event) {
-        if(event instanceof FerEvent) {
-            FerEvent ferevent = (FerEvent) event;
+        if(event instanceof FerEvent ferevent) {
             return new FerEvent(new Time(ferevent.time), ferevent.location);
         } else {
             return null;
