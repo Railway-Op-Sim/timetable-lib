@@ -1,13 +1,14 @@
 package net.danielgill.ros.timetable.data;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Contains a list of data templates, and also allows the user to add their own data templates.
  * @author Daniel Gill
  */
 public class DataTemplates {
-    public ArrayList<DataTemplate> templates;
+    public static List<DataTemplate> templates;
     
     /**
      * Adds a data template created from the keyword and data points.
