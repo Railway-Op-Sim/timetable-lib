@@ -18,15 +18,11 @@ public class Timetable {
         services.add(service);
     }
     
-    public String getTextTimetable() {
+    public String getTextTimetable() throws ServiceInvalidException {
         StringBuilder output = new StringBuilder("");
         output.append(startTime.toString());
         for(Service service : services) {
-            try {
-                output.append("\u0000").append(service.toTimetableString());
-            } catch (ServiceInvalidException e) {
-                System.err.println("[" + e.getRef() + "]: " + e.getMessage());
-            }
+            output.append("\u0000").append(service.toTimetableString());
         }
         output.append("\u0000");
         return output.toString();
