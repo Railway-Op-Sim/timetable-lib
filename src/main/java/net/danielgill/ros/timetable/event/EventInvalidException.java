@@ -5,7 +5,7 @@ package net.danielgill.ros.timetable.event;
  * @author Daniel Gill
  */
 public class EventInvalidException extends Exception {
-	String eventString;
+	final String eventString;
 
 	/**
 	 * Creates a new instance.
