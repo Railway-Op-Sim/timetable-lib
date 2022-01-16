@@ -11,7 +11,7 @@ public abstract class Event {
      * The constructor which takes a String type.
      * @param type The type of the event as a String.
      */
-    public Event(String type) {
+    protected Event(String type) {
         this.type = type;
     }
 

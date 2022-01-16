@@ -20,8 +20,7 @@ public class SfsEvent extends Event implements ReferenceEvent,TimedEvent {
 
     @Override
     public Event newInstance(Event event) {
-        if(event instanceof SfsEvent) {
-            SfsEvent sfsevent = (SfsEvent) event;
+        if(event instanceof SfsEvent sfsevent) {
             return new SfsEvent(new Time(sfsevent.time), new Reference(sfsevent.ref));
         } else {
             return null;

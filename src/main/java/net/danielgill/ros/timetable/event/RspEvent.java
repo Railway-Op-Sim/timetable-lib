@@ -20,8 +20,7 @@ public class RspEvent extends Event implements TimedEvent, ReferenceEvent {
 
     @Override
     public Event newInstance(Event event) {
-        if(event instanceof RspEvent) {
-            RspEvent rspevent = (RspEvent) event;
+        if(event instanceof RspEvent rspevent) {
             return new RspEvent(new Time(rspevent.time), new Reference(rspevent.ref));
         } else {
             return null;
