@@ -8,10 +8,10 @@ import java.util.List;
  * @author Daniel Gill
  */
 public class DataTemplates {
-    public static final List<DataTemplate> templates = new ArrayList<>();
+    protected static final List<DataTemplate> templates = new ArrayList<>();
 
     public DataTemplates() {
-        
+        throw new UnsupportedOperationException();
     }
     
     /**
