@@ -15,7 +15,7 @@ import net.danielgill.ros.timetable.time.Time;
 public class ParseEvent {
 
     public ParseEvent() {
-
+        //Not sure what to put here.
     }
 
     /**
