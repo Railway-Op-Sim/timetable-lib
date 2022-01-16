@@ -19,16 +19,16 @@ public class Timetable {
     }
     
     public String getTextTimetable() {
-        String output = "";
-        output += startTime.toString();
+        StringBuilder output = new StringBuilder("");
+        output.append(startTime.toString());
         for(Service service : services) {
             try {
-                output += "\u0000" + service.toTimetableString();
+                output.append("\u0000").append(service.toTimetableString());
             } catch (ServiceInvalidException e) {
                 System.err.println("[" + e.getRef() + "]: " + e.getMessage());
             }
         }
-        output += "\u0000";
-        return output;
+        output.append("\u0000");
+        return output.toString();
     }
 }
