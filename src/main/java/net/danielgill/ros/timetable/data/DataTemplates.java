@@ -8,7 +8,11 @@ import java.util.List;
  * @author Daniel Gill
  */
 public class DataTemplates {
-    public static List<DataTemplate> templates;
+    public static final List<DataTemplate> templates = new ArrayList<>();
+
+    public DataTemplates() {
+        
+    }
     
     /**
      * Adds a data template created from the keyword and data points.
@@ -76,10 +80,6 @@ public class DataTemplates {
             }
         }
         return -1;
-    }
-    
-    public DataTemplates() {
-        templates = new ArrayList<>();
     }
     
     public static final DataTemplate C139_1 = addTemplateR("C139_1", 64, 13, 7, 64);
