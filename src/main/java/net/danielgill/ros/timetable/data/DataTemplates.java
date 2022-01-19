@@ -11,7 +11,7 @@ public class DataTemplates {
     protected static final List<DataTemplate> templates = new ArrayList<>();
 
     public DataTemplates() {
-        throw new UnsupportedOperationException();
+        //Not implemented.
     }
     
     /**
