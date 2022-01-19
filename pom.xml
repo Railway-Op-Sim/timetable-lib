@@ -26,7 +26,7 @@
                 <version>3.2.0</version>
                 <configuration>
                     <reportOutputDirectory>${project.basedir}</reportOutputDirectory>
-                    <destDir>docs</destDir>
+                    <destDir>target/site</destDir>
                 </configuration>
             </plugin>
         </plugins>
