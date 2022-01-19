@@ -5,19 +5,36 @@ import net.danielgill.ros.timetable.service.Service;
 import net.danielgill.ros.timetable.service.ServiceInvalidException;
 import net.danielgill.ros.timetable.time.Time;
 
+/**
+ * A class to store the timetable which can then be printed.
+ * @author Daniel Gill
+ */
 public class Timetable {
     private ArrayList<Service> services;
     private final Time startTime;
     
+    /**
+     * Create a new timetable with the start time.
+     * @param startTime The time at which the timetable starts.
+     */
     public Timetable(Time startTime) {
         services = new ArrayList<>();
         this.startTime = startTime;
     }
     
+    /**
+     * Adds a service to the timetable.
+     * @param service Adds a completed service to the timetable.
+     */
     public void addService(Service service) {
         services.add(service);
     }
     
+    /**
+     * Returns the timetable as a string to be added to a file or printed.
+     * @return The string timetable.
+     * @throws ServiceInvalidException Thrown if a service is invalid in the timetable that may cause other issues.
+     */
     public String getTextTimetable() throws ServiceInvalidException {
         StringBuilder output = new StringBuilder("");
         output.append(startTime.toString());
