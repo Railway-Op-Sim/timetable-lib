@@ -38,4 +38,12 @@ public class FerEvent extends Event implements TimedEvent {
             throw new EventInvalidException(this.toString());
         }
 	}
+
+    public Time getTime() {
+        return this.time;
+    }
+
+    public Location getLocation() {
+        return this.location;
+    }
 }

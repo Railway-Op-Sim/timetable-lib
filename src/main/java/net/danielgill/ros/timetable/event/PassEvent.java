@@ -38,4 +38,12 @@ public class PassEvent extends Event implements TimedEvent {
             throw new EventInvalidException(this.toString());
         }
 	}
+
+    public Time getTime() {
+        return this.time;
+    }
+
+    public NamedLocation getLoc() {
+        return this.location;
+    }
 }

@@ -44,4 +44,11 @@ public class SfsEvent extends Event implements ReferenceEvent,TimedEvent {
         this.time.addMinutes(minutes);
     }
     
+    public Time getTime() {
+        return this.time;
+    }
+
+    public Reference getRef() {
+        return this.ref;
+    }
 }

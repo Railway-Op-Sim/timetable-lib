@@ -69,4 +69,12 @@ public class StopEvent extends Event implements TimedEvent {
             throw new EventInvalidException(this.toString());
         }
 	}
+
+    public ArrayList<Time> getTimes() {
+        return this.times;
+    }
+
+    public NamedLocation getLoc() {
+        return this.location;
+    }
 }

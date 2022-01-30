@@ -34,4 +34,8 @@ public class CdtEvent extends Event implements TimedEvent {
             throw new EventInvalidException(this.toString());
         }
     }
+
+    public Time getTime() {
+        return this.time;
+    }
 }
