@@ -267,4 +267,35 @@ public class Service {
     public Event getEventFromIndex(int index) {
         return events.get(index);
     }
+
+    /**
+     * Returns an ArrayList containing all the events for a service.
+     * @return ArrayList containing all events for a service.
+     */
+    public ArrayList<Event> getEvents() {
+        return events;
+    }
+
+    /**
+     * Sets the event at the given index.
+     * @param index The Integer index to be set.
+     * @param evt The new event.
+     */
+    public void setEventAtIndex(int index, Event evt) {
+        events.set(index, evt);
+    }
+
+    /**
+     * Returns the first event in a service that matches a given type.
+     * @param type The type of the service as a string.
+     * @return The first event.
+     */
+    public Event getFirstEventByType(String type) {
+        for(Event e : events) {
+            if(e.getType().equalsIgnoreCase(type)) {
+                return e;
+            }
+        }
+        return null;
+    }
 }
