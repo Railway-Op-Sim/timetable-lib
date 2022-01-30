@@ -1,6 +1,7 @@
 package net.danielgill.ros.timetable.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.danielgill.ros.timetable.data.Data;
 import net.danielgill.ros.timetable.data.DataTemplate;
@@ -77,18 +78,6 @@ public class Service {
         this.description = description;
         events = new ArrayList<>();
     }
-  
-    /**
-     * Sets the reference and description for a given service and creates new ArrayList.
-     * @deprecated This method should not be used, create a new instance of Service instead.
-     */
-    @Deprecated(since = "v1.2.0-alpha")
-    public void setDetails(Reference ref, String description) {
-        this.ref = ref;
-        this.description = description;
-        events = new ArrayList<>();
-    }
-
 
     /**
      * Sets the data for a given service.
@@ -278,5 +267,36 @@ public class Service {
      */
     public Event getEventFromIndex(int index) {
         return events.get(index);
+    }
+
+    /**
+     * Returns an List containing all the events for a service.
+     * @return List containing all events for a service.
+     */
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    /**
+     * Sets the event at the given index.
+     * @param index The Integer index to be set.
+     * @param evt The new event.
+     */
+    public void setEventAtIndex(int index, Event evt) {
+        events.set(index, evt);
+    }
+
+    /**
+     * Returns the first event in a service that matches a given type.
+     * @param type The type of the service as a string.
+     * @return The first event.
+     */
+    public Event getFirstEventByType(String type) {
+        for(Event e : events) {
+            if(e.getType().equalsIgnoreCase(type)) {
+                return e;
+            }
+        }
+        return null;
     }
 }

@@ -1,6 +1,7 @@
 package net.danielgill.ros.timetable.event;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.danielgill.ros.timetable.location.NamedLocation;
 import net.danielgill.ros.timetable.time.Time;
@@ -69,4 +70,12 @@ public class StopEvent extends Event implements TimedEvent {
             throw new EventInvalidException(this.toString());
         }
 	}
+
+    public List<Time> getTimes() {
+        return this.times;
+    }
+
+    public NamedLocation getLoc() {
+        return this.location;
+    }
 }

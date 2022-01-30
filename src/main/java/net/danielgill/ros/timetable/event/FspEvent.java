@@ -43,5 +43,13 @@ public class FspEvent extends Event implements TimedEvent, ReferenceEvent {
     public void incrementRef(int increment) {
         this.ref.incrementRef(increment);
     }
+
+    public Time getTime() {
+        return this.time;
+    }
+
+    public Reference getRef() {
+        return this.ref;
+    }
     
 }

@@ -44,4 +44,11 @@ public class JboEvent extends Event implements TimedEvent, ReferenceEvent {
         this.ref.incrementRef(increment);
     }
     
+    public Time getTime() {
+        return this.time;
+    }
+
+    public Reference getRef() {
+        return this.ref;
+    }
 }
