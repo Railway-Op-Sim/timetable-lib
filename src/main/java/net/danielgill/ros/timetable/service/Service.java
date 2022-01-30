@@ -77,18 +77,6 @@ public class Service {
         this.description = description;
         events = new ArrayList<>();
     }
-  
-    /**
-     * Sets the reference and description for a given service and creates new ArrayList.
-     * @deprecated This method should not be used, create a new instance of Service instead.
-     */
-    @Deprecated(since = "v1.2.0-alpha")
-    public void setDetails(Reference ref, String description) {
-        this.ref = ref;
-        this.description = description;
-        events = new ArrayList<>();
-    }
-
 
     /**
      * Sets the data for a given service.
