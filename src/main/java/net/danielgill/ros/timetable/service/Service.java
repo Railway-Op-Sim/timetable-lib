@@ -1,6 +1,7 @@
 package net.danielgill.ros.timetable.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import net.danielgill.ros.timetable.data.Data;
 import net.danielgill.ros.timetable.data.DataTemplate;
@@ -269,10 +270,10 @@ public class Service {
     }
 
     /**
-     * Returns an ArrayList containing all the events for a service.
-     * @return ArrayList containing all events for a service.
+     * Returns an List containing all the events for a service.
+     * @return List containing all events for a service.
      */
-    public ArrayList<Event> getEvents() {
+    public List<Event> getEvents() {
         return events;
     }
 

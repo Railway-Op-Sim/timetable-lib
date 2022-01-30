@@ -1,6 +1,8 @@
 package net.danielgill.ros.timetable;
 
 import java.util.ArrayList;
+import java.util.List;
+
 import net.danielgill.ros.timetable.service.Service;
 import net.danielgill.ros.timetable.service.ServiceInvalidException;
 import net.danielgill.ros.timetable.time.Time;
@@ -46,10 +48,10 @@ public class Timetable {
     }
 
     /**
-     * Returns an ArrayList containing references to all services in the timetable.
-     * @return An ArrayList containing services in a timetable.
+     * Returns an List containing references to all services in the timetable.
+     * @return An List containing services in a timetable.
      */
-    public ArrayList<Service> getServices() {
+    public List<Service> getServices() {
         return services;
     }
 
