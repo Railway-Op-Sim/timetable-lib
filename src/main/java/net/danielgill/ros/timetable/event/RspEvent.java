@@ -15,7 +15,7 @@ public class RspEvent extends Event implements TimedEvent, ReferenceEvent {
 
     @Override
     public String toString() {
-        return time.toString() + "rsp" + ref.toString();
+        return time.toString() + ";rsp;" + ref.toString();
     }
 
     @Override
