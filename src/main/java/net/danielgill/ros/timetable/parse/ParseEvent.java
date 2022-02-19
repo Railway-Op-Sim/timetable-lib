@@ -25,9 +25,10 @@ public class ParseEvent {
      * @return The event instance that represents the given string.
      */
     public Event getEventFromString(String eventString) {
-        //TODO: Add more events here when they are added the event package.
         String[] eventSplit = eventString.split(";");
-        if (eventSplit.length == 2) {
+        if(eventSplit.length == 1) {
+            return new FrhEvent();
+        } else if (eventSplit.length == 2) {
             if (eventSplit[1].equalsIgnoreCase("cdt")) {
                 return new CdtEvent(new Time(eventSplit[0]));
             } else {
