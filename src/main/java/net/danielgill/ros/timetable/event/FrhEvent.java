@@ -18,7 +18,6 @@ public class FrhEvent extends Event {
 
     @Override
     public void validateEvent() throws EventInvalidException {
-        return;
     }
     
 }
