@@ -28,7 +28,7 @@ public class Reference {
      * @param increment The increment to be added to the reference.
      */
     public void incrementRef(int increment) {
-        ref = ref.substring(0, 2) + String.format("%02d", (Integer.parseInt(ref.substring(2, 4)) + increment));
+        ref = ref.substring(0, 2) + String.format("%02d", (Integer.parseInt(ref.substring(2, 4)) + increment) % 100);
     }
 
     /**
