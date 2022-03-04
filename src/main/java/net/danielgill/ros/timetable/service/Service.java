@@ -166,13 +166,13 @@ public class Service {
     /**
      * Provides a string output of the service for a .ttb file format.
      * @return A String containing the service ready to be inserted into a .ttb file.
-     * @throws ServiceInvalidException Throws this if the service is invalid, should be caught and not added to a .ttb file.
+     * @throws ServiceInvalidException Throws this if a service is invalid, should be caught and not added to a .ttb file.
      */
     public String toTimetableString() throws ServiceInvalidException {
         validateService();
 
         String output = "";
-        if(events.get(0).getType().equals("Sns")) {
+        if(events.get(0).getType().equals("Sns") || events.get(0).getType().equals("Sfs")) {
             output += ref + ";" + description + ",";
         } else {
             output += ref + ";" + description + ";" + data.toString() + ",";
@@ -191,13 +191,13 @@ public class Service {
     /**
      * Provides a string output of the service in a readable format.
      * @return A string containing the service in a readable format.
-     * @throws ServiceInvalidException Throws this if the service is invalid, should be caught.
+     * @throws ServiceInvalidException Throws this if a service is invalid, should be caught.
      */
     public String toFormattedString() throws ServiceInvalidException {
         validateService();
         
         String output = "";
-        if(events.get(0).getType().equals("Sns")) {
+        if(events.get(0).getType().equals("Sns") || events.get(0).getType().equals("Sfs")) {
             output += ref + ";" + description + "\n";
         } else {
             output += ref + ";" + description + ";" + data.toString() + "\n";
@@ -237,7 +237,7 @@ public class Service {
         }
         
         Event startEvent = getEventFromIndex(0);
-        if(startEvent.getType().equals("Sns")) {
+        if(startEvent.getType().equals("Sns") || startEvent.getType().equals("Sfs")) {
             
         } else {
             data.validate(ref);
