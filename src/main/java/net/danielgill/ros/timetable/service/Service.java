@@ -172,7 +172,7 @@ public class Service {
         validateService();
 
         String output = "";
-        if(events.get(0).getType().equals("Sns")) {
+        if(events.get(0).getType().equals("Sns") || events.get(0).getType().equals("Sfs")) {
             output += ref + ";" + description + ",";
         } else {
             output += ref + ";" + description + ";" + data.toString() + ",";
@@ -197,7 +197,7 @@ public class Service {
         validateService();
         
         String output = "";
-        if(events.get(0).getType().equals("Sns")) {
+        if(events.get(0).getType().equals("Sns") || events.get(0).getType().equals("Sfs")) {
             output += ref + ";" + description + "\n";
         } else {
             output += ref + ";" + description + ";" + data.toString() + "\n";
