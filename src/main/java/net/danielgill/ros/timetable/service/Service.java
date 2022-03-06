@@ -239,8 +239,17 @@ public class Service {
         Event startEvent = getEventFromIndex(0);
         if(startEvent.getType().equals("Sns") || startEvent.getType().equals("Sfs")) {
             
-        } else {
+        } else if(startEvent.getType().equals("Snt")) {
             data.validate(ref);
+        } else {
+            throw new ServiceInvalidException("Missing a valid start event for service.", ref);
+        }
+
+        Event endEvent = getEventFromIndex(getEvents().size() - 1);
+        if(endEvent.getType().equals("Frh") || endEvent.getType().equals("Fer") || endEvent.getType().equals("Fns") || endEvent.getType().equals("Fsp")) {
+
+        } else {
+            throw new ServiceInvalidException("Missing a valid end event for service.", ref);
         }
     }
 

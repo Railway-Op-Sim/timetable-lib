@@ -78,4 +78,9 @@ public class StopEvent extends Event implements TimedEvent {
     public NamedLocation getLoc() {
         return this.location;
     }
+
+    @Override
+    public Time getTime() {
+        throw new UnsupportedOperationException("Unsupported method for StopEvent.");
+    }
 }

@@ -68,4 +68,13 @@ public class Timetable {
         }
         return null;
     }
+
+    public Time getStartTime() {
+        return startTime;
+    }
+
+    public void validate() throws TimetableInvalidException {
+        TimetableChecker tChecker = new TimetableChecker(this);
+        tChecker.checkTimetable();
+    }
 }
