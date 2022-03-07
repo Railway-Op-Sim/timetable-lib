@@ -5,8 +5,10 @@ import java.util.List;
 
 import net.danielgill.ros.timetable.event.Event;
 import net.danielgill.ros.timetable.event.ReferenceEvent;
+import net.danielgill.ros.timetable.event.TimedEvent;
 import net.danielgill.ros.timetable.service.Service;
 import net.danielgill.ros.timetable.service.ServiceInvalidException;
+import net.danielgill.ros.timetable.time.Time;
 
 public class TimetableChecker {
     public Timetable ttb;
@@ -35,11 +37,28 @@ public class TimetableChecker {
             try {
                 s.validateService();
             } catch (ServiceInvalidException e) {
-                throw new TimetableInvalidException("Error in service: " + e.toString());
+                throw new TimetableInvalidException("Error in service " + e.toString());
             }
 
-            fromList.add(getReferenceFromEvent(s.getEventFromIndex(0)));
-            toList.add(getReferenceFromEvent(s.getEventFromIndex(s.getEvents().size() - 1)));
+            String ref = s.getRef().toString();
+
+            String fromRef = getReferenceFromEvent(s.getEventFromIndex(0));
+            if(fromRef != null) {
+                fromList.add(fromRef);
+            } 
+            String toRef = getReferenceFromEvent(s.getEventFromIndex(s.getEvents().size() - 1));
+            if(toRef != null) {
+                toList.add(toRef);
+            }
+
+            Time startTime = ttb.getStartTime();
+            Event e = s.getEventFromIndex(0);
+            if(e instanceof TimedEvent) {
+                TimedEvent te = (TimedEvent) e;
+                if(te.getTime().earlierThan(startTime)) {
+                    throw new TimetableInvalidException("Error in service [" + ref + "]: Service starts before timetable start time.");
+                }
+            }
         }
     }
 

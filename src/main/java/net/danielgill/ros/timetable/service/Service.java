@@ -227,6 +227,9 @@ public class Service {
         if(events.isEmpty()) {
             throw new ServiceInvalidException("No events exist for service.", ref);
         }
+        if(events.size() <= 1) {
+            throw new ServiceInvalidException("Too few events for service, minimum 2.", ref);
+        }
         
         for(Event event : events) {
             try {
@@ -237,10 +240,15 @@ public class Service {
         }
         
         Event startEvent = getEventFromIndex(0);
+
         if(startEvent.getType().equals("Sns") || startEvent.getType().equals("Sfs")) {
             
         } else if(startEvent.getType().equals("Snt")) {
-            data.validate(ref);
+            if (data == null) {
+                throw new ServiceInvalidException("Missing data values for service.", ref);
+            } else {
+                data.validate(ref);
+            }
         } else {
             throw new ServiceInvalidException("Missing a valid start event for service.", ref);
         }
