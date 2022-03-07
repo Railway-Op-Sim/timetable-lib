@@ -4,12 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-import net.danielgill.ros.timetable.data.DataTemplate;
 import net.danielgill.ros.timetable.data.DataTemplates;
 import net.danielgill.ros.timetable.event.FrhEvent;
 import net.danielgill.ros.timetable.event.SntEvent;
-import net.danielgill.ros.timetable.event.StopEvent;
-import net.danielgill.ros.timetable.location.NamedLocation;
 import net.danielgill.ros.timetable.location.StartLocation;
 import net.danielgill.ros.timetable.reference.Reference;
 import net.danielgill.ros.timetable.service.Service;
