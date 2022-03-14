@@ -13,9 +13,8 @@ import net.danielgill.ros.timetable.time.Time;
  * @author Daniel Gill
  */
 public class ParseEvent {
-
-    public ParseEvent() {
-        //Not sure what to put here.
+    private ParseEvent() {
+        throw new UnsupportedOperationException();
     }
 
     /**

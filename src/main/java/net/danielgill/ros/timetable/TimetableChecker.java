@@ -15,6 +15,10 @@ import net.danielgill.ros.timetable.time.Time;
  * @author Daniel Gill
  */
 public class TimetableChecker {
+    private TimetableChecker() {
+        throw new UnsupportedOperationException();
+    }
+
     /**
      * Checks whether a given timetable is not valid, throws a TimetableInvalidException if not.
      * @param ttb The timetable object to be checked.

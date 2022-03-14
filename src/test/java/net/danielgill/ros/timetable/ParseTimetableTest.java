@@ -13,9 +13,9 @@ import net.danielgill.ros.timetable.parse.ParseTimetable;
 import net.danielgill.ros.timetable.service.Service;
 import net.danielgill.ros.timetable.service.ServiceInvalidException;
 
-public class ParseTimetableTest {
+class ParseTimetableTest {
     @Test
-    public void parseJSON2TTBTimetable() throws FileNotFoundException, ServiceInvalidException {
+    void parseJSON2TTBTimetable() throws FileNotFoundException, ServiceInvalidException {
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("Croydon.ttb").getFile());
         Timetable t = ParseTimetable.parseTimetable(file);

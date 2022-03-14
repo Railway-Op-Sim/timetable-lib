@@ -14,7 +14,9 @@ import net.danielgill.ros.timetable.time.Time;
  * @author Daniel Gill
  */
 public class ParseTimetable {
-    private static List<String> lines;
+    private ParseTimetable() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Parses a timetable in the .ttb format and returns the timetable object.
@@ -26,7 +28,7 @@ public class ParseTimetable {
     public static Timetable parseTimetable(File file) throws FileNotFoundException {
         Scanner read = new Scanner(file);
         read.useDelimiter("\u0000");
-        lines = new ArrayList<>();
+        List<String> lines = new ArrayList<>();
         while(read.hasNext()) {
             lines.add(read.next());
         }
@@ -46,10 +48,6 @@ public class ParseTimetable {
 
     private static boolean isComment(String line) {
         line = line.replace(" ", "");
-        if(line.startsWith("*")) {
-            return true;
-        } else {
-            return false;
-        }
+        return line.startsWith("*");
     }
 }

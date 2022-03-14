@@ -1,6 +1,8 @@
 package net.danielgill.ros.timetable.parse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import net.danielgill.ros.timetable.reference.Reference;
@@ -11,7 +13,9 @@ import net.danielgill.ros.timetable.service.Service;
  * @author Daniel Gill
  */
 public class ParseService {
-    private static List<String> lines;
+    private ParseService() {
+        throw new UnsupportedOperationException();
+    }
 
     /**
      * Parses a service from the .ttb format string and returns the service object.
@@ -20,10 +24,9 @@ public class ParseService {
      * @see Service
      */
     public static Service parseService(String serviceString) {
-        lines = new ArrayList<>();
-        for(String split : serviceString.split(",")) {
-            lines.add(split);
-        }
+        List<String> lines = new ArrayList<>();
+        String[] sArr = Arrays.copyOf(serviceString.split(","), serviceString.split(",").length);
+        Collections.addAll(lines, sArr);
         Service s;
         
         String init = lines.remove(0);
