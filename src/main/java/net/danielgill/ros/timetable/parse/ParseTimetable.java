@@ -45,7 +45,7 @@ public class ParseTimetable {
     }
 
     private static boolean isComment(String line) {
-        line.replace(" ", "");
+        line = line.replace(" ", "");
         if(line.startsWith("*")) {
             return true;
         } else {
