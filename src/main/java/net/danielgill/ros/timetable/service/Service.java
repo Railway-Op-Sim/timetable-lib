@@ -227,6 +227,9 @@ public class Service {
         if(events.isEmpty()) {
             throw new ServiceInvalidException("No events exist for service.", ref);
         }
+        if(events.size() <= 1) {
+            throw new ServiceInvalidException("Too few events for service, minimum 2.", ref);
+        }
         
         for(Event event : events) {
             try {
@@ -237,10 +240,41 @@ public class Service {
         }
         
         Event startEvent = getEventFromIndex(0);
+
         if(startEvent.getType().equals("Sns") || startEvent.getType().equals("Sfs")) {
             
+        } else if(startEvent.getType().equals("Snt")) {
+            if (data == null) {
+                throw new ServiceInvalidException("Missing data values for service.", ref);
+            } else {
+                data.validate(ref);
+            }
         } else {
-            data.validate(ref);
+            throw new ServiceInvalidException("Missing a valid start event for service.", ref);
+        }
+
+        Event endEvent = getEventFromIndex(getEvents().size() - 1);
+        if(endEvent.getType().equals("Frh") || endEvent.getType().equals("Fer") || endEvent.getType().equals("Fns") || endEvent.getType().equals("Fsp")) {
+
+        } else {
+            throw new ServiceInvalidException("Missing a valid end event for service.", ref);
+        }
+
+        validateEvents();
+    }
+
+    private void validateEvents() throws ServiceInvalidException {
+        TimedEvent first = (TimedEvent) getEventFromIndex(0);
+        Time current = new Time(first.getTime());
+
+        for(Event e : events) {
+            if(e instanceof TimedEvent te) {
+                if(te.getTime().earlierThan(current)) {
+                    throw new ServiceInvalidException("Event time is before previous event.", ref);
+                } else {
+                    current = te.getTime();
+                }
+            }
         }
     }
 

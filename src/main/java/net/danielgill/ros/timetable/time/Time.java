@@ -14,8 +14,13 @@ public class Time {
      */
     public Time(String timeColon) {
         String[] split = timeColon.split(":");
-        hours = Integer.parseInt(split[0]);
-        minutes = Integer.parseInt(split[1]);
+        int newHours = Integer.parseInt(split[0]);
+        minutes = Integer.parseInt(split[1]) + (newHours * 60);
+        if(minutes >= 1440) {
+            minutes %= 1440;
+        } 
+        this.hours = (int) minutes / 60;
+        this.minutes = (int) minutes % 60;
     }
 
     /**
