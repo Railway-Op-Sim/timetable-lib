@@ -74,7 +74,6 @@ public class Timetable {
     }
 
     public void validate() throws TimetableInvalidException {
-        TimetableChecker tChecker = new TimetableChecker(this);
-        tChecker.checkTimetable();
+        TimetableChecker.checkTimetable(this);
     }
 }

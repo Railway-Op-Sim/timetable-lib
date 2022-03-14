@@ -10,14 +10,21 @@ import net.danielgill.ros.timetable.service.Service;
 import net.danielgill.ros.timetable.service.ServiceInvalidException;
 import net.danielgill.ros.timetable.time.Time;
 
+/**
+ * A class to check the validity of a timetable.
+ * @author Daniel Gill
+ */
 public class TimetableChecker {
-    public Timetable ttb;
-
-    public TimetableChecker(Timetable ttb) {
-        this.ttb = ttb;
+    private TimetableChecker() {
+        throw new UnsupportedOperationException();
     }
 
-    public void checkTimetable() throws TimetableInvalidException {
+    /**
+     * Checks whether a given timetable is not valid, throws a TimetableInvalidException if not.
+     * @param ttb The timetable object to be checked.
+     * @throws TimetableInvalidException Thrown if the timetable is invalid.
+     */
+    public static void checkTimetable(Timetable ttb) throws TimetableInvalidException {
         if(ttb.getServices() == null || ttb.getServices().size() == 0 || ttb.getServices().isEmpty()) {
             throw new TimetableInvalidException("Timetable does not have any services.");
         }
@@ -25,10 +32,10 @@ public class TimetableChecker {
             throw new TimetableInvalidException("Timetable does not have a start time.");
         }
 
-        checkServices();
+        checkServices(ttb);
     }
 
-    private void checkServices() throws TimetableInvalidException {
+    private static void checkServices(Timetable ttb) throws TimetableInvalidException {
         List<String> fromList = new ArrayList<>();
         List<String> toList = new ArrayList<>();
 
@@ -64,18 +71,18 @@ public class TimetableChecker {
             String ref = s.getRef().toString();
 
             String fromRef = getReferenceFromEvent(s.getEventFromIndex(0));
-            if(!toList.contains(fromRef) && fromRef != null) {
+            if(!toList.contains(ref) && fromRef != null) {
                 throw new TimetableInvalidException("Error in service [" + ref + "]: No service " + fromRef + " exists to form from.");
             }
 
             String toRef = getReferenceFromEvent(s.getEventFromIndex(s.getEvents().size() - 1));
-            if(!fromList.contains(toRef) && toRef != null) {
+            if(!fromList.contains(ref) && toRef != null) {
                 throw new TimetableInvalidException("Error in service [" + ref + "]: No service " + toRef + " exists to form to.");
             }
         }
     }
 
-    private String getReferenceFromEvent(Event e) {
+    private static String getReferenceFromEvent(Event e) {
         if(e instanceof ReferenceEvent) {
             ReferenceEvent ref = (ReferenceEvent) e;
             return ref.getRef().toString();

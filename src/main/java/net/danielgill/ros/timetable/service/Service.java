@@ -268,7 +268,7 @@ public class Service {
         Time current = new Time(first.getTime());
 
         for(Event e : events) {
-            if(e instanceof TimedEvent te) {
+            if(e instanceof TimedEvent te && !e.getType().equals("stop")) {
                 if(te.getTime().earlierThan(current)) {
                     throw new ServiceInvalidException("Event time is before previous event.", ref);
                 } else {
