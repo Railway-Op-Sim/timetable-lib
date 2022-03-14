@@ -24,7 +24,7 @@ public class ParseEvent {
      * @param eventString The string in the .ttb format for a single event.
      * @return The event instance that represents the given string.
      */
-    public static Event getEventFromString(String eventString) {
+    public static Event parseEvent(String eventString) {
         String[] eventSplit = eventString.split(";");
         if(eventSplit.length == 1) {
             return new FrhEvent();

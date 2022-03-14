@@ -16,10 +16,10 @@ import net.danielgill.ros.timetable.time.Time;
 public class ParseEventTest {
     @Test
     void testParseEvent() {
-        Assertions.assertEquals(new SnsEvent(new Time("00:00"), new Reference("1D51")).toString(), ParseEvent.getEventFromString("00:00;Sns;1D51").toString());
-        Assertions.assertEquals(new StopEvent(new NamedLocation("Test"), new Time("12:00")).toString(), ParseEvent.getEventFromString("12:00;Test").toString());
-        Assertions.assertEquals(new SfsEvent(new Time("01:00"), new Reference("1D51")).toString(), ParseEvent.getEventFromString("01:00;Sfs;1D51").toString());
-        Assertions.assertEquals(new CdtEvent(new Time("12:00")).toString(), ParseEvent.getEventFromString("12:00;cdt").toString());
-        Assertions.assertEquals(new FrhEvent().toString(), ParseEvent.getEventFromString("Frh").toString());
+        Assertions.assertEquals(new SnsEvent(new Time("00:00"), new Reference("1D51")).toString(), ParseEvent.parseEvent("00:00;Sns;1D51").toString());
+        Assertions.assertEquals(new StopEvent(new NamedLocation("Test"), new Time("12:00")).toString(), ParseEvent.parseEvent("12:00;Test").toString());
+        Assertions.assertEquals(new SfsEvent(new Time("01:00"), new Reference("1D51")).toString(), ParseEvent.parseEvent("01:00;Sfs;1D51").toString());
+        Assertions.assertEquals(new CdtEvent(new Time("12:00")).toString(), ParseEvent.parseEvent("12:00;cdt").toString());
+        Assertions.assertEquals(new FrhEvent().toString(), ParseEvent.parseEvent("Frh").toString());
     }
 }

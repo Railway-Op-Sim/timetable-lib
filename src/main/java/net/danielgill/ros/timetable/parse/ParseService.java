@@ -27,7 +27,7 @@ public class ParseService {
         }
 
         for(String line : lines) {
-            s.addEvent(ParseEvent.getEventFromString(line));
+            s.addEvent(ParseEvent.parseEvent(line));
         }
 
         return s;
