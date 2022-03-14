@@ -6,9 +6,19 @@ import java.util.List;
 import net.danielgill.ros.timetable.reference.Reference;
 import net.danielgill.ros.timetable.service.Service;
 
+/**
+ * A class which can parse a service given a String input.
+ * @author Daniel Gill
+ */
 public class ParseService {
     private static List<String> lines;
 
+    /**
+     * Parses a service from the .ttb format string and returns the service object.
+     * @param serviceString The service string to be parsed.
+     * @return The parsed service object.
+     * @see Service
+     */
     public static Service parseService(String serviceString) {
         lines = new ArrayList<>();
         for(String split : serviceString.split(",")) {
