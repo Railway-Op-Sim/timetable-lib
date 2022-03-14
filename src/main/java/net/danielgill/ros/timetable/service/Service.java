@@ -259,6 +259,23 @@ public class Service {
         } else {
             throw new ServiceInvalidException("Missing a valid end event for service.", ref);
         }
+
+        validateEvents();
+    }
+
+    private void validateEvents() throws ServiceInvalidException {
+        TimedEvent first = (TimedEvent) getEventFromIndex(0);
+        Time current = new Time(first.getTime());
+
+        for(Event e : events) {
+            if(e instanceof TimedEvent te) {
+                if(te.getTime().earlierThan(current)) {
+                    throw new ServiceInvalidException("Event time is before previous event.", ref);
+                } else {
+                    current = te.getTime();
+                }
+            }
+        }
     }
 
     /**

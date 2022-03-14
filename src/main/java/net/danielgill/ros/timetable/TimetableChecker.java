@@ -60,6 +60,19 @@ public class TimetableChecker {
                 }
             }
         }
+        for(Service s : services) {
+            String ref = s.getRef().toString();
+
+            String fromRef = getReferenceFromEvent(s.getEventFromIndex(0));
+            if(!toList.contains(fromRef) && fromRef != null) {
+                throw new TimetableInvalidException("Error in service [" + ref + "]: No service " + fromRef + " exists to form from.");
+            }
+
+            String toRef = getReferenceFromEvent(s.getEventFromIndex(s.getEvents().size() - 1));
+            if(!fromList.contains(toRef) && toRef != null) {
+                throw new TimetableInvalidException("Error in service [" + ref + "]: No service " + toRef + " exists to form to.");
+            }
+        }
     }
 
     private String getReferenceFromEvent(Event e) {
