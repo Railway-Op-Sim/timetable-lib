@@ -51,4 +51,14 @@ public class RspEvent extends Event implements TimedEvent, ReferenceEvent {
     public Reference getRef() {
         return this.ref;
     }
+
+    @Override
+    public String getDescription() {
+        return "Rear Split";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Rear splits to form " + ref.toString() + " at time " + time.toString());
+    }
 }

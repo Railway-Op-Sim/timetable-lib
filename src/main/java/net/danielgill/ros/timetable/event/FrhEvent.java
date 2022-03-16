@@ -19,5 +19,15 @@ public class FrhEvent extends Event {
     @Override
     public void validateEvent() throws EventInvalidException {
     }
+
+    @Override
+    public String getDescription() {
+        return "Finish and Remain Here";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return "Finishes and remains here";
+    }
     
 }

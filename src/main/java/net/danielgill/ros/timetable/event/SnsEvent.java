@@ -50,4 +50,14 @@ public class SnsEvent extends Event implements ReferenceEvent,TimedEvent {
     public void incrementRef(int increment) {
         this.ref.incrementRef(increment);
     }
+
+    @Override
+    public String getDescription() {
+        return "Start from Another Service";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Starts from " + ref.toString() + " at time " + time.toString());
+    }
 }

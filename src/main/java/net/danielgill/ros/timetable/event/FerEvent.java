@@ -46,4 +46,14 @@ public class FerEvent extends Event implements TimedEvent {
     public Location getLocation() {
         return this.location;
     }
+
+    @Override
+    public String getDescription() {
+        return "Finish and Exit Railway";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Exits at " + location.toString() + " at time " + time.toString());
+    }
 }

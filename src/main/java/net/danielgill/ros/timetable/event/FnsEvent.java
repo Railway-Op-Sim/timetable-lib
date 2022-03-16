@@ -51,4 +51,14 @@ public class FnsEvent extends Event implements ReferenceEvent, TimedEvent {
     public Reference getRef() {
         return this.ref;
     }
+
+    @Override
+    public String getDescription() {
+        return "Finish and Form New Service";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Forms new service " + ref.toString() + " at " + time.toString());
+    }
 }

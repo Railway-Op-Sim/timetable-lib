@@ -46,4 +46,14 @@ public class PassEvent extends Event implements TimedEvent {
     public NamedLocation getLoc() {
         return this.location;
     }
+
+    @Override
+    public String getDescription() {
+        return "Pass a Station";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Passes " + location.toString() + " at time " + time.toString());
+    }
 }
