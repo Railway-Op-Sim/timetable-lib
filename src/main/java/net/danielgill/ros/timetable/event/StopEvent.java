@@ -9,6 +9,8 @@ import net.danielgill.ros.timetable.time.Time;
 public class StopEvent extends Event implements TimedEvent {
     private ArrayList<Time> times;
     private NamedLocation location;
+    private boolean arrival;
+    private boolean departure;
     
     public StopEvent(Time arrTime, Time depTime, NamedLocation location) {
         super("stop");
@@ -16,23 +18,31 @@ public class StopEvent extends Event implements TimedEvent {
         times.add(arrTime);
         times.add(depTime);
         this.location = location;
+        arrival = true;
+        departure = true;
     }
     public StopEvent(Time arrTime, NamedLocation location) {
         super("stop");
         times = new ArrayList<>();
         times.add(arrTime);
         this.location = location;
+        arrival = true;
+        departure = false;
     }
     public StopEvent(NamedLocation location, Time depTime) {
         super("stop");
         times = new ArrayList<>();
         times.add(depTime);
         this.location = location;
+        arrival = false;
+        departure = true;
     }
     private StopEvent(ArrayList<Time> times, NamedLocation location) {
         super("stop");
         this.times = times;
         this.location = location;
+        arrival = false;
+        departure = true;
     }
     
     @Override
@@ -82,5 +92,23 @@ public class StopEvent extends Event implements TimedEvent {
     @Override
     public Time getTime() {
         throw new UnsupportedOperationException("Unsupported method for StopEvent.");
+    }
+
+    @Override
+    public String getDescription() {
+        return "Stop at Station";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        if(arrival && departure) {
+            return ("Stops at " + location.toString() + " from " + times.get(0).toString() + " to " + times.get(1));
+        } else if(arrival) {
+            return ("Arrives at " + location.toString() + " at time " + times.get(0).toString());
+        } else if(departure) {
+            return ("Departs from " + location.toString() + " at time " + times.get(0).toString());
+        } else {
+            return ("Stops at " + location.toString() + " from " + times.get(0).toString() + " to " + times.get(1));
+        }
     }
 }

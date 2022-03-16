@@ -45,4 +45,14 @@ public class SntEvent extends Event implements TimedEvent {
             throw new EventInvalidException(this.toString());
         }
 	}
+
+    @Override
+    public String getDescription() {
+        return "Start and Enter Railway";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Enters at " + location.toString() + " at time " + time.toString());
+    }
 }

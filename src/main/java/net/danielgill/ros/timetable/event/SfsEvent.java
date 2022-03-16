@@ -51,4 +51,14 @@ public class SfsEvent extends Event implements ReferenceEvent,TimedEvent {
     public Reference getRef() {
         return this.ref;
     }
+
+    @Override
+    public String getDescription() {
+        return "Start from Split";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Starts from the split of " + ref.toString() + " at time " + time.toString());
+    }
 }

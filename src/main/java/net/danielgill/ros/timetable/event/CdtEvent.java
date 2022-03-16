@@ -38,4 +38,14 @@ public class CdtEvent extends Event implements TimedEvent {
     public Time getTime() {
         return this.time;
     }
+
+    @Override
+    public String getDescription() {
+        return "Change Direction of Train";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Changes direction at " + time.toString());
+    }
 }

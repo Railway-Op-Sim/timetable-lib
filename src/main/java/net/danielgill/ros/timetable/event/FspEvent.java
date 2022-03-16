@@ -51,5 +51,15 @@ public class FspEvent extends Event implements TimedEvent, ReferenceEvent {
     public Reference getRef() {
         return this.ref;
     }
+
+    @Override
+    public String getDescription() {
+        return "Front Split";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Front splits to form " + ref.toString() + " at time " + time.toString());
+    }
     
 }

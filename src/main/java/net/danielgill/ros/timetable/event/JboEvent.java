@@ -51,4 +51,14 @@ public class JboEvent extends Event implements TimedEvent, ReferenceEvent {
     public Reference getRef() {
         return this.ref;
     }
+
+    @Override
+    public String getDescription() {
+        return "Joined by Other Service";
+    }
+
+    @Override
+    public String getContextualDescription() {
+        return ("Service " + ref.toString() + " joins this one at time " + time.toString());
+    }
 }

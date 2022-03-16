@@ -23,6 +23,18 @@ public abstract class Event {
     public abstract String toString();
 
     /**
+     * Returns a String description of the event type.
+     * @return A String description of the event type.
+     */
+    public abstract String getDescription();
+
+    /**
+     * Returns a string description of the event with context.
+     * @return A String description of the event.
+     */
+    public abstract String getContextualDescription();
+
+    /**
      * Returns a copy of the event instance.
      * @param event The event instance to be copied.
      * @return The copied event instance.
