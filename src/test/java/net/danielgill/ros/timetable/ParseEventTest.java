@@ -13,7 +13,7 @@ import net.danielgill.ros.timetable.parse.ParseEvent;
 import net.danielgill.ros.timetable.reference.Reference;
 import net.danielgill.ros.timetable.time.Time;
 
-public class ParseEventTest {
+class ParseEventTest {
     @Test
     void testParseEvent() {
         Assertions.assertEquals(new SnsEvent(new Time("00:00"), new Reference("1D51")).toString(), ParseEvent.parseEvent("00:00;Sns;1D51").toString());
