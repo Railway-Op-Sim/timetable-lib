@@ -47,4 +47,20 @@ public class Repeat {
             return "";
         }
     }
+
+    public int getInterval() {
+        return this.interval;
+    }
+
+    public Time getIntervalTime() {
+        return new Time(this.interval);
+    }
+
+    public int getIncrement() {
+        return this.increment;
+    }
+
+    public int getNumberOfRepeats() {
+        return this.number;
+    }
 }

@@ -104,6 +104,14 @@ public class Service {
     public void setData(Data data) {
         this.data = data;
     }
+
+    /**
+     * Gets the data object accociated with the service.
+     * @return Data object.
+     */
+    public Data getData() {
+        return this.data;
+    }
     
     /**
      * Adds a data template and starting speed to a service.
@@ -204,7 +212,14 @@ public class Service {
     public void setRepeat(Time interval, int increment, int number) {
         this.repeat = new Repeat(interval, increment, number);
     }
-
+    
+    /**
+     * Returns the repeat object associated with the service.
+     * @return The repeat object.
+     */
+    public Repeat getRepeat() {
+        return this.repeat;
+    }
 
     /**
      * Provides a string output of the service for a .ttb file format.
@@ -348,6 +363,38 @@ public class Service {
     }
 
     /**
+     * Sets the reference for the service.
+     * @param ref A String to be set as the new reference.
+     */
+    public void setRef(String ref) {
+        this.ref = new Reference(ref);
+    }
+
+    /**
+     * Sets the reference for the service.
+     * @param ref A reference object to be set as the new reference.
+     */
+    public void setRef(Reference ref) {
+        this.ref = ref;
+    }
+
+    /**
+     * Sets the description for the service.
+     * @param description A String description of the service.
+     */
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * Sets the start speed for the service.
+     * @param startSpeed The new start speed for the service as an int.
+     */
+    public void setStartSpeed(int startSpeed) {
+        this.data = new Data(startSpeed, this.data);
+    }
+
+    /**
      * Returns an Event from the service's event array list from a given index.
      * @param index The index of the event array list.
      * @return The event located in the service's list of events.
@@ -363,6 +410,14 @@ public class Service {
     public List<Event> getEvents() {
         return events;
     }
+
+    /**
+     * Sets the list of events in the service.
+     * @param events An ArrayList containing Event objects.
+     */
+    public void setEvents(ArrayList<Event> events) {
+        this.events = events;
+    } 
 
     /**
      * Sets the event at the given index.
