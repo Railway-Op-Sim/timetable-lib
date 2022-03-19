@@ -21,6 +21,7 @@ public class Service {
     private Reference ref;
     private String description;
     private Data data;
+    private Repeat repeat;
     
     private ArrayList<Event> events;
 
@@ -39,6 +40,7 @@ public class Service {
         this.description = description;
         this.data = new Data(startSpeed, maxSpeed, mass, maxBrake, power);
         events = new ArrayList<>();
+        repeat = new Repeat(0, 0, 0);
     }
     
     /**
@@ -52,6 +54,7 @@ public class Service {
         this.description = description;
         this.data = data;
         events = new ArrayList<>();
+        repeat = new Repeat(0, 0, 0);
     }
     
     /**
@@ -66,6 +69,7 @@ public class Service {
         this.description = description;
         this.data = new Data(startSpeed, data);
         events = new ArrayList<>();
+        repeat = new Repeat(0, 0, 0);
     }
 
     /**
@@ -77,6 +81,7 @@ public class Service {
         this.ref = ref;
         this.description = description;
         events = new ArrayList<>();
+        repeat = new Repeat(0, 0, 0);
     }
 
     /**
@@ -162,6 +167,34 @@ public class Service {
         }
     }
 
+    /**
+     * Sets the repeat for a service.
+     * @param r The repeat object to be set as the repeats.
+     */
+    public void setRepeat(Repeat r) {
+        this.repeat = r;
+    }
+
+    /**
+     * Sets the repeats for a service.
+     * @param interval The time in minutes between repeats.
+     * @param increment The increment of the reference for repeats.
+     * @param number The number of repeats of a service after the original.
+     */
+    public void setRepeat(int interval, int increment, int number) {
+        this.repeat = new Repeat(interval, increment, number);
+    }
+
+    /**
+     * Sets the repeats for a service.
+     * @param interval The time object representing the between repeats.
+     * @param increment The increment of the reference for repeats.
+     * @param number The number of repeats of a service after the original.
+     */
+    public void setRepeat(Time interval, int increment, int number) {
+        this.repeat = new Repeat(interval, increment, number);
+    }
+
 
     /**
      * Provides a string output of the service for a .ttb file format.
@@ -184,6 +217,11 @@ public class Service {
             current = i + 1;
         }
         output += events.get(current).toString();
+
+        String repeatString = repeat.toString();
+        if(!repeatString.isEmpty()) {
+            output += "," + repeatString;
+        }
         
         return output;
     }
@@ -209,6 +247,11 @@ public class Service {
             current = i + 1;
         }
         output += events.get(current).toString();
+
+        String repeatString = repeat.toString();
+        if(!repeatString.isEmpty()) {
+            output += "\n" + repeatString;
+        }
         
         return output;
     }
