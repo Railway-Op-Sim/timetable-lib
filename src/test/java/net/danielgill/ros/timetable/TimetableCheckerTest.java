@@ -18,7 +18,7 @@ import net.danielgill.ros.timetable.service.ServiceInvalidException;
 import net.danielgill.ros.timetable.time.Time;
 
 
-public class TimetableCheckerTest {
+class TimetableCheckerTest {
 
     @Test
     public void testTimetable() {

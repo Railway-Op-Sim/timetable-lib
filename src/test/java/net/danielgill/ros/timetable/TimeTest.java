@@ -8,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 import net.danielgill.ros.timetable.time.Time;
 
-public class TimeTest {
+class TimeTest {
     @Test
     void testTimeParse() {
         assertEquals("00:10", new Time("00:10").toString());

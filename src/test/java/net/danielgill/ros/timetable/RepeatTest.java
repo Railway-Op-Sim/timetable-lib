@@ -11,7 +11,7 @@ import net.danielgill.ros.timetable.service.Repeat;
 import net.danielgill.ros.timetable.service.Service;
 import net.danielgill.ros.timetable.service.ServiceInvalidException;
 
-public class RepeatTest {
+class RepeatTest {
     @Test
     void testRepeats() throws ServiceInvalidException {
         Service s = new Service(new Reference("1A01"), "TEST", DataTemplates.C139_1.getData(), 20);
