@@ -52,8 +52,22 @@ public class ParseEvent {
                 return new FspEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
             } else if (eventSplit[1].equalsIgnoreCase("rsp")) {
                 return new RspEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
+            } else if (eventSplit[1].equalsIgnoreCase("Frh-sh")) {
+                return new FrhshEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
+            } else if (eventSplit[1].equalsIgnoreCase("Sns-fsh")) {
+                return new SnsfshEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
+            } else if (eventSplit[1].equalsIgnoreCase("F-nshs")) {
+                return new FnshsEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
             } else {
                 return new StopEvent(new Time(eventSplit[0]), new Time(eventSplit[1]), new NamedLocation(eventSplit[2]));
+            }
+        } else if (eventSplit.length == 4) {
+            if(eventSplit[1].equalsIgnoreCase("Snt-sh")) {
+                return new SntshEvent(new Time(eventSplit[0]), new StartLocation(eventSplit[2]), new Reference(eventSplit[3]));
+            } else if(eventSplit[1].equalsIgnoreCase("Sns-sh")) {
+                return new SnsshEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]), new Reference(eventSplit[3]));
+            } else if(eventSplit[1].equalsIgnoreCase("Fns-sh")) {
+                return new FnsshEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]), new Reference(eventSplit[3]));
             }
         }
         return null;

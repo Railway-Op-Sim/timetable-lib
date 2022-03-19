@@ -16,7 +16,7 @@ public abstract class Event {
     }
 
     /**
-     * Returns the event as a string. Should be overridden.
+     * Returns the event as a string.
      * @return A String version of the event.
      */
     @Override

@@ -9,6 +9,7 @@ import net.danielgill.ros.timetable.event.Event;
 import net.danielgill.ros.timetable.event.EventInvalidException;
 import net.danielgill.ros.timetable.event.ReferenceEvent;
 import net.danielgill.ros.timetable.event.TimedEvent;
+import net.danielgill.ros.timetable.parse.ParseEvent;
 import net.danielgill.ros.timetable.reference.Reference;
 import net.danielgill.ros.timetable.template.Template;
 import net.danielgill.ros.timetable.time.Time;
@@ -124,6 +125,15 @@ public class Service {
         } catch (Exception e) {
             System.err.println(e.getMessage());
         }
+    }
+
+    /**
+     * Adds an event to the end of the current list of events.
+     * @param event A string version of the event to be added to the service.
+     * @see ParseEvent
+     */
+    public void addEvent(String event) {
+        this.events.add(ParseEvent.parseEvent(event));
     }
 
     /**
