@@ -5,7 +5,9 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+import net.danielgill.ros.timetable.event.Event;
 import net.danielgill.ros.timetable.reference.Reference;
+import net.danielgill.ros.timetable.service.Repeat;
 import net.danielgill.ros.timetable.service.Service;
 
 /**
@@ -36,11 +38,20 @@ public class ParseService {
         } else if(initSplit.length == 7) {
             s = new Service(new Reference(initSplit[0]), initSplit[1], Integer.parseInt(initSplit[2]), Integer.parseInt(initSplit[3]), Integer.parseInt(initSplit[4]), Integer.parseInt(initSplit[5]), Integer.parseInt(initSplit[6]));
         } else {
-            s = new Service(new Reference(initSplit[0]), "Test");
+            s = new Service(new Reference(initSplit[0]), null);
         }
 
         for(String line : lines) {
-            s.addEvent(ParseEvent.parseEvent(line));
+            Event e = ParseEvent.parseEvent(line);
+            if(e != null) {
+                s.addEvent(e);
+            } else {
+                if(line.startsWith("R")) {
+                    String[] split = line.split(";");
+                    s.setRepeat(new Repeat(Integer.parseInt(split[1]), Integer.parseInt(split[2]), Integer.parseInt(split[3])));
+                }
+            }
+            
         }
 
         return s;

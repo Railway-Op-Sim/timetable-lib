@@ -26,4 +26,17 @@ class ParseTimetableTest {
         StopEvent e = (StopEvent) s.getFirstEventByType("stop");
         assertEquals("Selhurst", e.getLoc().toString());
     }
+
+    @Test
+    void parseTimetableTest() throws FileNotFoundException {
+        ClassLoader classLoader = getClass().getClassLoader();
+        File file = new File(classLoader.getResource("Antwerpen_Centraal_2021.ttb").getFile());
+        Timetable t = ParseTimetable.parseTimetable(file);
+
+        assertDoesNotThrow(() -> {t.validate();});
+        assertEquals("04:30", t.getStartTime().toString());
+        Service s = t.getServiceByRef("1953");
+        assertEquals(60, s.getRepeat().getInterval());
+        assertEquals("05:26;Snt;N51-25 N50-25", s.getFirstEventByType("Snt").toString());
+    }
 }

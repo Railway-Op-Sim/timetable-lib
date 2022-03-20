@@ -25,6 +25,11 @@ public class ParseEvent {
      */
     public static Event parseEvent(String eventString) {
         String[] eventSplit = eventString.split(";");
+
+        if(eventSplit[0].startsWith("R")) {
+            return null;
+        }
+
         if(eventSplit.length == 1) {
             return new FrhEvent();
         } else if (eventSplit.length == 2) {
