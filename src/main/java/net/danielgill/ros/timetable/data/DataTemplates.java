@@ -81,6 +81,14 @@ public class DataTemplates {
         }
         return -1;
     }
+
+    /**
+     * Returns a list of available data templates.
+     * @return The list of data templates.
+     */
+    public List<DataTemplate> getDataTemplates() {
+        return DataTemplates.templates;
+    }
     
     public static final DataTemplate C139_1 = addTemplateR("C139_1", 64, 13, 7, 64);
     public static final DataTemplate C142_2 = addTemplateR("C142_2", 121, 56, 11, 336);
