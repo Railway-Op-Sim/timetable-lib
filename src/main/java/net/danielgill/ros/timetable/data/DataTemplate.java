@@ -7,6 +7,7 @@ package net.danielgill.ros.timetable.data;
 public class DataTemplate {
     private Data data;
     private String keyword;
+    private String label;
     
     /**
      * Create a new data template from individual service data and a keyword.
@@ -19,6 +20,22 @@ public class DataTemplate {
     public DataTemplate(String keyword, int maxSpeed, int mass, int maxBrake, int power) {
         this.data = new Data(maxSpeed, mass, maxBrake, power);
         this.keyword = keyword;
+        this.label = "";
+    }
+    
+    /**
+     * Create a new data template from individual service data, a keyword and label.
+     * @param keyword
+     * @param maxSpeed
+     * @param mass
+     * @param maxBrake
+     * @param power
+     * @param label
+     */
+    public DataTemplate(String keyword, int maxSpeed, int mass, int maxBrake, int power, String label) {
+        this.data = new Data(maxSpeed, mass, maxBrake, power);
+        this.keyword = keyword;
+        this.label = label;
     }
     
     /**
@@ -44,5 +61,13 @@ public class DataTemplate {
      */
     public boolean keywordEqual(String keywordTest) {
         return this.keyword.equalsIgnoreCase(keywordTest);
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
     }
 }
