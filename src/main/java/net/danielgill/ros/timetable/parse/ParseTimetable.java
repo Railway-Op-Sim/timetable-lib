@@ -34,7 +34,6 @@ public class ParseTimetable {
         while(read.hasNext()) {
             lines.add(read.next());
         }
-        System.out.println(lines);
         read.close();
 
         Timetable t;
@@ -46,9 +45,7 @@ public class ParseTimetable {
             newLine = newLine.replace(" ", "");
             Pattern p = Pattern.compile("[0-9][0-9]:[0-9][0-9]");
             Matcher m = p.matcher(newLine);
-            System.out.println(newLine);
             if(m.find() && !isComment(newLine)) {
-                System.out.println(newLine.substring(m.start(), m.end()));
                 t = new Timetable(new Time(newLine.substring(m.start(), m.end())));
                 startTimeFound = true;
             } else {
