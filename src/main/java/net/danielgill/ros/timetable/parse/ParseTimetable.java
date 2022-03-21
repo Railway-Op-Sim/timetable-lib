@@ -5,6 +5,8 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import net.danielgill.ros.timetable.Timetable;
 import net.danielgill.ros.timetable.time.Time;
@@ -34,7 +36,22 @@ public class ParseTimetable {
         }
         read.close();
 
-        Timetable t = new Timetable(new Time(lines.remove(0)));
+        Timetable t;
+        boolean startTimeFound = false;
+
+        t = new Timetable(null);
+        while(!startTimeFound) {
+            String newLine = lines.remove(0);
+            newLine = newLine.replace(" ", "");
+            Pattern p = Pattern.compile("[0-9][0-9]:[0-9][0-9]");
+            Matcher m = p.matcher(newLine);
+            if(m.find() && !isComment(newLine)) {
+                t = new Timetable(new Time(newLine.substring(m.start(), m.end())));
+                startTimeFound = true;
+            } else {
+
+            }
+        }
 
         for(String line : lines) {
             if(isComment(line)) {
@@ -48,6 +65,6 @@ public class ParseTimetable {
 
     private static boolean isComment(String line) {
         line = line.replace(" ", "");
-        return line.startsWith("*");
+        return line.startsWith("*") || line.startsWith("-") || line.startsWith("+");
     }
 }
