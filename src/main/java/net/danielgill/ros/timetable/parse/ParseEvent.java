@@ -63,6 +63,8 @@ public class ParseEvent {
                 return new SnsfshEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
             } else if (eventSplit[1].equalsIgnoreCase("F-nshs")) {
                 return new FnshsEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
+            } else if (eventSplit[1].equalsIgnoreCase("Fjo")) {
+                return new FjoEvent(new Time(eventSplit[0]), new Reference(eventSplit[2]));
             } else {
                 return new StopEvent(new Time(eventSplit[0]), new Time(eventSplit[1]), new NamedLocation(eventSplit[2]));
             }
