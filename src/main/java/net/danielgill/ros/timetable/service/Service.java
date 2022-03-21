@@ -309,7 +309,7 @@ public class Service {
         
         Event startEvent = getEventFromIndex(0);
 
-        if(startEvent.getType().equals("Sns") || startEvent.getType().equals("Sfs")) {
+        if(startEvent.getType().equals("Sns") || startEvent.getType().equals("Sfs") || startEvent.getType().equals("Sns-fsh") || startEvent.getType().equals("Sns-sh") || startEvent.getType().equals("Snt-sh")) {
             
         } else if(startEvent.getType().equals("Snt")) {
             if (data == null) {
@@ -322,7 +322,7 @@ public class Service {
         }
 
         Event endEvent = getEventFromIndex(getEvents().size() - 1);
-        if(endEvent.getType().equals("Frh") || endEvent.getType().equals("Fer") || endEvent.getType().equals("Fns") || endEvent.getType().equals("Fsp")) {
+        if(endEvent.getType().equals("Frh") || endEvent.getType().equals("Fer") || endEvent.getType().equals("Fns") || endEvent.getType().equals("Fsp") || endEvent.getType().equals("Fjo") || endEvent.getType().equals("F-nshs") || endEvent.getType().equals("Fns-sh") || endEvent.getType().equals("Frh-sh")) {
 
         } else {
             throw new ServiceInvalidException("Missing a valid end event for service.", ref);
