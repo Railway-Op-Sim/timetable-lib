@@ -23,4 +23,13 @@ public class NamedLocation {
     public String toString() {
         return name;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof NamedLocation) {
+            NamedLocation other = (NamedLocation) o;
+            return this.name.equals(other.name);
+        }
+        return false;
+    }
 }

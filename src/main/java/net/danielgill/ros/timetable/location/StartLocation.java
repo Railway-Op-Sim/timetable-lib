@@ -6,6 +6,7 @@ package net.danielgill.ros.timetable.location;
  */
 public class StartLocation {
     private Location[] locations;
+    private String label;
 
     /**
      * Creates a new instance from two location strings.
@@ -14,6 +15,12 @@ public class StartLocation {
      */
     public StartLocation(String rear, String front) {
         locations = new Location[]{new Location(rear), new Location(front)};
+        this.label = "";
+    }
+
+    public StartLocation(String rear, String front, String label) {
+        locations = new Location[]{new Location(rear), new Location(front)};
+        this.label = label;
     }
 
     /**
@@ -32,5 +39,26 @@ public class StartLocation {
     @Override
     public String toString() {
         return locations[0].toString() + " " + locations[1].toString();
+    }
+
+    public String getLabel() {
+        return this.label;
+    }
+
+    public Location getRearLocation() {
+        return this.locations[0];
+    }
+
+    public Location getFrontLocation() {
+        return this.locations[1];
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o instanceof StartLocation) {
+            StartLocation other = (StartLocation) o;
+            return this.locations[0].equals(other.getRearLocation()) && this.locations[1].equals(other.getFrontLocation());
+        }
+        return false;
     }
 }
